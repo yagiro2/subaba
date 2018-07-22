@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <h1>Subs</h1>
+        <div class="flex">
+            <div style="margin-right: 10px;">Video:</div>
+            <input id="movie-file-input" type="file"/>
+        </div>
+        <div class="flex" style="margin-top: 10px;">
+            <div style="margin-right: 10px;">Language:</div>
+            <select id="lang-select">
+                <option value="all">All Languages</option>
+                <option selected value="heb">Hebrew</option>
+                <option value="eng">English</option>
+            </select>
+        </div>
+        <div class="flex btn-container" style="margin-top: 10px;">
+            <div class="btn" onclick="findSubsForFile()">Find</div>
+            <div class="btn" onclick="findSubsForFileInOs()">Find in OS</div>
+        </div>
+        <div id="results-container">
+            <div class="flex" style="align-items: flex-end;">
+                <h2>Results</h2>
+            </div>
+            <div id="results"></div>
+        </div>
+
+        <script src="lib/jquery.min.js"></script>
+        <script src="lib/hash.js"></script>
+        <script src="lib/langs.js"></script>
+        <script src="lib/loader.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>
