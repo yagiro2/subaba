@@ -16,16 +16,16 @@
                 <option value="eng">English</option>
             </select>
         </div>
+        <div style="margin-top: 10px;">
+            Flexible <input id="flexible-checkbox" type="checkbox" checked/>
+        </div>
         <div class="flex btn-container" style="margin-top: 10px;">
             <div class="btn" onclick="findSubsForFile()">Find</div>
             <div class="btn" onclick="findSubsForFileInOs()">Find in OS</div>
         </div>
-        <div id="results-container">
-            <div class="flex" style="align-items: flex-end;">
-                <h2>Results</h2>
-            </div>
-            <div id="results"></div>
-        </div>
+
+        <div id="results-container"></div>
+        <div id="flex-results-container"></div>
 
         <script src="lib/jquery.min.js"></script>
         <script src="lib/hash.js"></script>

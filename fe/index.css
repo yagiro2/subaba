@@ -18,11 +18,8 @@ body, input {
 }
 
 .btn:hover {
-
-
     color: white;
     background-color: #333;
-
 }
 
 .btn-container > .btn:not(:first-child) {
@@ -36,14 +33,17 @@ body, input {
 #results {
     width: 70%;
     margin-top: 10px;
-
 }
 
 #results-container {
     margin-top: 20px;
 }
 
-#results > *:nth-child(odd) {
+#results > .sub:nth-child(odd) {
+    background-color: #f5f5f5;
+}
+
+.results > .sub:nth-child(odd) {
     background-color: #f5f5f5;
 }
 
@@ -55,4 +55,12 @@ body, input {
 
 .sub:hover {
     background-color: #d3efff!important;
+}
+
+.results-msg {
+    display: flex;
+    margin: 19px 0 0 0;
+    background-color: black;
+    color: white;
+    padding: 7px;
 }

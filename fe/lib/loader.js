@@ -17,7 +17,7 @@ function Loader($container, options = {}) {
 
 Loader.prototype.defaults = {
     val: '.',
-    size: 20,
+    size: 10,
     intervalMs: 300,
 };
 

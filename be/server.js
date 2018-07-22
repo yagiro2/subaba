@@ -20,13 +20,14 @@ app.get('/api/subs', (req, res) => {
         });
 });
 
-function createOsQuery(query) {
+function createOsQuery(data) {
     const {
         hash,
         lang,
         filename,
         filesize,
-    } = query;
+        query,
+    } = data;
     /*
         ---------------------
             sublangageid
@@ -39,6 +40,7 @@ function createOsQuery(query) {
         if (hash) { osQuery.hash = hash; };
         if (filename) { osQuery.filename = filename; };
         if (filesize) { osQuery.filesize = filesize; };
+        if (query) { osQuery.query = query; };
         return osQuery;
     }
 
