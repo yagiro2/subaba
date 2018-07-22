@@ -12,7 +12,8 @@ function findSubsForFile() {
     const $out = $('#results');
     $out.empty();
     hash(file, (file, hash) => {
-        findSubs(hash, (subs) => {
+        const data = { hash, file };
+        findSubs(data, (subs) => {
             g.loader.stop();
             const subsArr = Object.values(subs);
             subsArr.forEach(sub => {
@@ -49,9 +50,10 @@ function getLang() {
     return $('#lang-select').val();
 }
 
-function findSubs(hash, callback) {
+function findSubs(data, callback) {
+    const { hash, file } = data;
     const lang = getLang();
-    $.ajax(`http://localhost:3001/api/subs?lang=${lang}&hash=${hash}`, {
+    $.ajax(`http://localhost:3001/api/subs?lang=${lang}&hash=${hash}&filename=${file.name}&filesize=${file.size}`, {
         success: callback,
     });
 }

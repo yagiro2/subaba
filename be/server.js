@@ -24,6 +24,8 @@ function createOsQuery(query) {
     const {
         hash,
         lang,
+        filename,
+        filesize,
     } = query;
     /*
         ---------------------
@@ -35,6 +37,8 @@ function createOsQuery(query) {
         const osQuery = {};
         if (lang) { osQuery.sublanguageid = lang; };
         if (hash) { osQuery.hash = hash; };
+        if (filename) { osQuery.filename = filename; };
+        if (filesize) { osQuery.filesize = filesize; };
         return osQuery;
     }
 
