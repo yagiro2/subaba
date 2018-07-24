@@ -6,6 +6,7 @@ function init() {
             $resultsContainer: $('#results-container'),
             $results: $('#results'),
             $flexibleCheckbox: $('#flexible-checkbox'),
+            $exactCheckbox: $('#exact-checkbox'),
             $langSelect: $('#lang-select'),
             $langSelect: $('#lang-select'),
             videoFileInput: document.getElementById('movie-file-input'),
@@ -24,9 +25,26 @@ function clearResults() {
 function findSubsForFile() {
     const file = getFile();
     if (!file) return;
-    clearResults();
+    if (isExactSearch()) {
+        runExactSearch(file);
+    }
+    if (isFlexibleSearch()) {
+        runFlexibleSearch(file);
+    }
+}
+
+function isExactSearch() {
+    return g.elems.$exactCheckbox.prop('checked');
+}
+
+function isFlexibleSearch() {
+    return g.elems.$flexibleCheckbox.prop('checked');
+}
+
+function runExactSearch(file) {
     const $container = g.elems.$resultsContainer;
     const $out = $(`<div class="results"></div>`);
+    $container.empty();
     g.elems.$resultsTitle = $(`<div class="results-msg"><span>Searching</span></div>`);
     g.elems.$resultsLoader = $(`<span>`);
     g.loader = new Loader(g.elems.$resultsLoader);
@@ -47,18 +65,11 @@ function findSubsForFile() {
                 $out.append('<div>No subtitles found.</div>');
             }
             $container.append($out);
-            if (isFlexible()) {
-                runFlexibleSearch(file);
-            }
         }, err => {
             g.loader.stop();
             $out.append('Something went wrong.');
         });
     });
-}
-
-function isFlexible() {
-    return g.elems.$flexibleCheckbox.prop('checked');
 }
 
 function runFlexibleSearch(file) {
