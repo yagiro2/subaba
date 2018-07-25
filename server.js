@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
+const path = require('path');
 
 const os = require('./open-subtitles');
 
@@ -9,6 +10,8 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     next();
 });
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/api/subs', (req, res) => {
     const osQuery = createOsQuery(req.query);

@@ -1,25 +1,14 @@
 $(init);
 
+const config = {
+    apiUrl: 'http://localhost:3001/api',
+};
+
 function init() {
     window.g = {
-        elems: {
-            $resultsContainer: $('#results-container'),
-            $results: $('#results'),
-            $flexibleCheckbox: $('#flexible-checkbox'),
-            $exactCheckbox: $('#exact-checkbox'),
-            $langSelect: $('#lang-select'),
-            $langSelect: $('#lang-select'),
-            videoFileInput: document.getElementById('movie-file-input'),
-            $flexResultsContainer: $('#flex-results-container'),
-            $flexResults: $('#flex-results'),
-        },
+        elems: getElems(),
     };
     g.loader = new Loader(g.elems.$resultsContainer);
-}
-
-function clearResults() {
-    g.elems.$resultsContainer.empty();
-    g.elems.$flexResultsContainer.empty();
 }
 
 function findSubsForFile() {
@@ -31,14 +20,6 @@ function findSubsForFile() {
     if (isFlexibleSearch()) {
         runFlexibleSearch(file);
     }
-}
-
-function isExactSearch() {
-    return g.elems.$exactCheckbox.prop('checked');
-}
-
-function isFlexibleSearch() {
-    return g.elems.$flexibleCheckbox.prop('checked');
 }
 
 function runExactSearch(file) {
@@ -96,17 +77,6 @@ function runFlexibleSearch(file) {
     });
 }
 
-function startFlexibleLoader($container, query) {
-    const $flexibleLoaderContainer = $('<span>');
-    g.elems.$flexibleLoaderContainer = $flexibleLoaderContainer;
-    g.flexibleLoader = new Loader($flexibleLoaderContainer);
-    g.elems.$flexResultsTitle = $('<div class="results-msg">')
-            .append(`<span>Searching for '${query}'</span>`)
-            .append(g.elems.$flexibleLoaderContainer);
-    $container.append(g.elems.$flexResultsTitle);
-    g.flexibleLoader.start();
-}
-
 function createFlexibleQuery(file) {
     const fileNameNoExt = removeExtenstion(file.name);
     const onlySpaces = replaceSeperatorsWithSpaces(fileNameNoExt);
@@ -127,43 +97,6 @@ function removeExtenstion(filename) {
         }
     }
     return fileNameNoExtension;
-}
-
-function createSubElem(sub) {
-    const $sub = $('<div>');
-    const $lang = $(`<div style="width: 200px;">${sub.lang}</div>`)
-    const $filename = $(`<div>${sub.filename}</div>`)
-    $sub
-        .addClass('sub')
-        .append($lang)
-        .append($filename)
-        .click(event => window.open(sub.url));
-    return $sub;
-}
-
-function getFile() {
-    const input = g.elems.videoFileInput;
-    const fileList = input ? input.files : undefined;
-    const file = fileList && fileList.length > 0 ? fileList[0] : null;
-    return file;
-}
-
-function getLang() {
-    return g.elems.$langSelect.val();
-}
-
-function findSubs(data, success, error) {
-    const { query, hash, file } = data;
-    const lang = getLang();
-    const hashParam = hash ? `&hash=${hash}` : '';
-    const queryParam = query ? `&query=${query}` : '';
-    const filenameParam = file ? `&filename=${file.name}` : '';
-    const filesizeParam = file ? `&filesize=${file.size}` : '';
-
-    $.ajax(`http://localhost:3001/api/subs?lang=${lang}${filenameParam}${filesizeParam}${hashParam}${queryParam}`, {
-        success,
-        error,
-    });
 }
 
 function findSubsForFileInOs() {
