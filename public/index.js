@@ -35,6 +35,7 @@ function runExactSearch(file) {
     hash(file, (file, hash) => {
         const data = { hash, file };
         findSubs(data, (subs) => {
+            $out.empty();
             g.loader.stop();
             g.results = subs;
             const subsArr = Object.values(subs);
@@ -60,6 +61,7 @@ function runFlexibleSearch(file) {
     const data = { query: createFlexibleQuery(file) };
     startFlexibleLoader($container, data.query);
     findSubs(data, (subs) => {
+        $out.empty();
         g.flexibleLoader.stop();
         g.elems.$flexResultsTitle.html(`Flexible Search Results for '${data.query}'`);
         g.flexResults = subs;
@@ -89,21 +91,28 @@ function replaceSeperatorsWithSpaces(s) {
 }
 
 function removeExtenstion(filename) {
-    const dotSplit = filename.split('.');
-    let fileNameNoExtension = '';
-    for (let i = 0; i < dotSplit.length; ++i) {
-        if (i < dotSplit.length - 1) {
-            fileNameNoExtension += dotSplit[i];
-        }
-    }
-    return fileNameNoExtension;
+    return filename.split('.').slice(0, -1).join('.');
 }
 
 function findSubsForFileInOs() {
     const file = getFile();
     if (!file) return;
     const lang = getLang();
+    if (isExactSearch()) {
+        exactSearchInOs(file, lang);
+    }
+    if (isFlexibleSearch()) {
+        flexSearchInOs(file, lang);
+    }
+}
+
+function exactSearchInOs(file, lang) {
     hash(file, (file, hash) => {
         window.open(`https://www.opensubtitles.org/en/search/sublanguageid-${lang}/moviehash-${hash}`);
     });
+}
+
+function flexSearchInOs(file, lang) {
+    const query = encodeURIComponent(createFlexibleQuery(file));
+    window.open(`https://www.opensubtitles.org/en/search2/sublanguageid-${lang}/moviename-${query}`);
 }

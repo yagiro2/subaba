@@ -13,7 +13,8 @@ body, input {
     cursor: pointer;
     border-radius: 3px;
     padding: 10px;
-    background-color: #d3efff;
+    /* background-color: #d3efff; */
+    background-color: #ffeb3b;
     color: #333;
 }
 
@@ -54,7 +55,8 @@ body, input {
 }
 
 .sub:hover {
-    background-color: #d3efff!important;
+    background-color: #ffeb3b!important;
+    /* background-color: #d3efff!important; */
 }
 
 .results-msg {
@@ -63,4 +65,9 @@ body, input {
     background-color: black;
     color: white;
     padding: 7px;
+}
+
+.text-link {
+    cursor: pointer;
+    color: rgb(0, 107, 168);
 }

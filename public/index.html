@@ -3,7 +3,7 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <h1>Subs</h1>
+        <h1>.! Subaba !.</h1>
         <div class="flex">
             <div style="margin-right: 10px;">Video:</div>
             <input id="movie-file-input" type="file"/>
@@ -21,8 +21,11 @@
             <input id="flexible-checkbox" type="checkbox" checked/>Flexible
         </div>
         <div class="flex btn-container" style="margin-top: 10px;">
-            <div class="btn" onclick="findSubsForFile()">Find</div>
-            <div class="btn" onclick="findSubsForFileInOs()">Find in OS</div>
+            <div class="btn" onclick="findSubsForFile()">SEARCH</div>
+            <!-- <div class="btn" onclick="findSubsForFileInOs()">Find in OS</div> -->
+            <div class="flex" style="align-items: center; margin-left: 10px;">
+                <div class="text-link" onclick="findSubsForFileInOs()">SEARCH ON OPENSUBTITLES</div>
+            </div>
         </div>
 
         <div id="results-container"></div>
