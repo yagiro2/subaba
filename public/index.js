@@ -2,7 +2,7 @@ $(init);
 
 const config = {
     // apiUrl: 'http://localhost:3001/api',
-    apiUrl: 'https://subaba.herokuapp.com/',
+    apiUrl: 'https://subaba.herokuapp.com/api',
 };
 
 function init() {
