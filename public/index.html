@@ -8,21 +8,29 @@
             <button onclick="login()"i>Login</button>
         </div>
         <div id="content">
-            <h1>.&lt;| SUBABA |&gt;.</h1>
-            <div class="flex">
-                <div style="margin-right: 10px;">Video:</div>
-                <input id="movie-file-input" type="file"/>
+            <div class="logo">.&lt;| SUBABA |&gt;.</div>
+            <div id="settings">
+                <div class="flex">
+                    <div style="margin-right: 10px;">Language:</div>
+                    <select id="lang-select">
+                        <option value="all">All Languages</option>
+                        <option selected value="heb">Hebrew</option>
+                        <option value="eng">English</option>
+                    </select>
+                </div>
             </div>
-            <div class="flex" style="margin-top: 10px;">
-                <div style="margin-right: 10px;">Language:</div>
-                <select id="lang-select">
-                    <option value="all">All Languages</option>
-                    <option selected value="heb">Hebrew</option>
-                    <option value="eng">English</option>
-                </select>
+            <div class="flex" style="margin-top: 30px;">
+                <input id="search-text-input" type="text" placeholder="2PAC is still alive..." style="min-width: 600px; padding: 6px;"/>
+                <div class="btn" onclick="runTextSearch()">SEARCH</div>
+            </div>
+            <div id="video-search-container" style="margin-top: 20px;">
+                <div class="title">. FILE SEARCH .</div>
+                <div class="flex">
+                    <input id="video-file-input" type="file"/>
+                </div>
             </div>
             <div style="margin-top: 10px;">
-                <input id="exact-checkbox" type="checkbox" checked/>Exact
+                <input id="exact-checkbox" type="checkbox" checked/>Exact Match
                 <input id="flexible-checkbox" type="checkbox" checked/>Flexible
             </div>
             <div class="flex btn-container" style="margin-top: 10px;">
@@ -33,17 +41,20 @@
                 </div>
             </div>
 
-            <div id="results-container"></div>
-            <div id="flex-results-container"></div>
-
-            <script src="lib/jquery.min.js"></script>
-            <script src="lib/hash.js"></script>
-            <script src="lib/langs.js"></script>
-            <script src="lib/loader.js"></script>
-            <script src="lib/ui.js"></script>
-            <script src="lib/api.js"></script>
-            <script src="index.js"></script>
+            <div>
+                <div id="text-results-container">
+                    <div id="text-results" class="results"></div>
+                </div>
+                <div id="exact-results-container"></div>
+                <div id="flex-results-container"></div>
+            </div>
         </div>
-
+        <script src="lib/jquery.min.js"></script>
+        <script src="lib/hash.js"></script>
+        <script src="lib/langs.js"></script>
+        <script src="lib/loader.js"></script>
+        <script src="lib/ui.js"></script>
+        <script src="lib/api.js"></script>
+        <script src="index.js"></script>
     </body>
 </html>

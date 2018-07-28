@@ -40,7 +40,7 @@ function runExactSearch(file) {
             g.loader.stop();
             g.results = subs;
             const subsArr = Object.values(subs);
-            g.elems.$resultsTitle.html(`Search Results`);
+            g.elems.$resultsTitle.html(`Exact Search Results`);
             subsArr.forEach(sub => {
                 $out.append(createSubElem(sub));
             });
@@ -116,4 +116,36 @@ function exactSearchInOs(file, lang) {
 function flexSearchInOs(file, lang) {
     const query = encodeURIComponent(createFlexibleQuery(file));
     window.open(`https://www.opensubtitles.org/en/search2/sublanguageid-${lang}/moviename-${query}`);
+}
+
+function runTextSearch() {
+    const query = getSearchText();
+    if (!query || query.length === 0) return;
+    const $container = g.elems.$textResultsContainer;
+    const $out = g.elems.$textResults;
+    $container.empty();
+    startTextResultLoader($container, query);
+    const data = { query };
+    findSubs(data, (subs) => {
+        $out.empty();
+        g.textLoader.stop();
+        g.elems.$textResultsTitle.html(`Search Results for '${data.query}'`);
+        g.textResults = subs;
+        const subsArr = Object.values(subs);
+        subsArr.forEach(sub => {
+            $out.append(createSubElem(sub));
+        });
+        if (subsArr.length === 0) {
+            $out.append(`<div>No subtitles found in text search.</div>`);
+        }
+        $container.append($out);
+    }, err => {
+        g.textLoader.stop();
+        $out.append('Something went wrong.');
+    });
+
+}
+
+function getSearchText() {
+    return g.elems.$textSearchInput.val();
 }

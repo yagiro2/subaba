@@ -1,14 +1,17 @@
 function getElems() {
     return {
-        $resultsContainer: $('#results-container'),
+        $resultsContainer: $('#exact-results-container'),
         $results: $('#results'),
         $flexibleCheckbox: $('#flexible-checkbox'),
         $exactCheckbox: $('#exact-checkbox'),
         $langSelect: $('#lang-select'),
         $langSelect: $('#lang-select'),
-        videoFileInput: document.getElementById('movie-file-input'),
+        videoFileInput: document.getElementById('video-file-input'),
         $flexResultsContainer: $('#flex-results-container'),
+        $textResultsContainer: $('#text-results-container'),
+        $textResults: $('#text-results'),
         $flexResults: $('#flex-results'),
+        $textSearchInput: $('#search-text-input'),
     }
 }
 
@@ -44,6 +47,17 @@ function startFlexibleLoader($container, query) {
             .append(g.elems.$flexibleLoaderContainer);
     $container.append(g.elems.$flexResultsTitle);
     g.flexibleLoader.start();
+}
+
+function startTextResultLoader($container, query) {
+    const $loaderContainer = $('<span>');
+    g.elems.$textLoaderContainer = $loaderContainer;
+    g.textLoader = new Loader($loaderContainer);
+    g.elems.$textResultsTitle = $('<div class="results-msg">')
+            .append(`<span>Searching for '${query}'</span>`)
+            .append(g.elems.$textLoaderContainer);
+    $container.append(g.elems.$textResultsTitle);
+    g.textLoader.start();
 }
 
 function isExactSearch() {
