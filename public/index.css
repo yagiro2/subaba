@@ -9,6 +9,10 @@ body, input {
     font-size: 15px;
 }
 
+.hidden {
+    display: none;
+}
+
 .btn {
     cursor: pointer;
     border-radius: 3px;

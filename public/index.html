@@ -3,40 +3,47 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <h1>.&lt;| SUBABA |&gt;.</h1>
-        <div class="flex">
-            <div style="margin-right: 10px;">Video:</div>
-            <input id="movie-file-input" type="file"/>
+        <div id="login" class="hidden">
+            Password <input type="text">
+            <button onclick="login()"i>Login</button>
         </div>
-        <div class="flex" style="margin-top: 10px;">
-            <div style="margin-right: 10px;">Language:</div>
-            <select id="lang-select">
-                <option value="all">All Languages</option>
-                <option selected value="heb">Hebrew</option>
-                <option value="eng">English</option>
-            </select>
-        </div>
-        <div style="margin-top: 10px;">
-            <input id="exact-checkbox" type="checkbox" checked/>Exact
-            <input id="flexible-checkbox" type="checkbox" checked/>Flexible
-        </div>
-        <div class="flex btn-container" style="margin-top: 10px;">
-            <div class="btn" onclick="findSubsForFile()">SEARCH</div>
-            <!-- <div class="btn" onclick="findSubsForFileInOs()">Find in OS</div> -->
-            <div class="flex" style="align-items: center; margin-left: 10px;">
-                <div class="text-link" onclick="findSubsForFileInOs()">SEARCH ON OPENSUBTITLES</div>
+        <div id="content">
+            <h1>.&lt;| SUBABA |&gt;.</h1>
+            <div class="flex">
+                <div style="margin-right: 10px;">Video:</div>
+                <input id="movie-file-input" type="file"/>
             </div>
+            <div class="flex" style="margin-top: 10px;">
+                <div style="margin-right: 10px;">Language:</div>
+                <select id="lang-select">
+                    <option value="all">All Languages</option>
+                    <option selected value="heb">Hebrew</option>
+                    <option value="eng">English</option>
+                </select>
+            </div>
+            <div style="margin-top: 10px;">
+                <input id="exact-checkbox" type="checkbox" checked/>Exact
+                <input id="flexible-checkbox" type="checkbox" checked/>Flexible
+            </div>
+            <div class="flex btn-container" style="margin-top: 10px;">
+                <div class="btn" onclick="findSubsForFile()">SEARCH</div>
+                <!-- <div class="btn" onclick="findSubsForFileInOs()">Find in OS</div> -->
+                <div class="flex" style="align-items: center; margin-left: 10px;">
+                    <div class="text-link" onclick="findSubsForFileInOs()">SEARCH ON OPENSUBTITLES</div>
+                </div>
+            </div>
+
+            <div id="results-container"></div>
+            <div id="flex-results-container"></div>
+
+            <script src="lib/jquery.min.js"></script>
+            <script src="lib/hash.js"></script>
+            <script src="lib/langs.js"></script>
+            <script src="lib/loader.js"></script>
+            <script src="lib/ui.js"></script>
+            <script src="lib/api.js"></script>
+            <script src="index.js"></script>
         </div>
 
-        <div id="results-container"></div>
-        <div id="flex-results-container"></div>
-
-        <script src="lib/jquery.min.js"></script>
-        <script src="lib/hash.js"></script>
-        <script src="lib/langs.js"></script>
-        <script src="lib/loader.js"></script>
-        <script src="lib/ui.js"></script>
-        <script src="lib/api.js"></script>
-        <script src="index.js"></script>
     </body>
 </html>
