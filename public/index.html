@@ -1,6 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="index.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     </head>
     <body>
         <div id="login" class="hidden">
@@ -8,10 +9,10 @@
             <button onclick="login()"i>Login</button>
         </div>
         <div id="content">
-            <div class="logo">.&lt;| SUBABA |&gt;.</div>
+            <div class="logo">SUBABA</div>
             <div id="settings">
                 <div class="flex">
-                    <div style="margin-right: 10px;">Language:</div>
+                    <div style="margin-right: 5px;">Language</div>
                     <select id="lang-select">
                         <option value="all">All Languages</option>
                         <option selected value="heb">Hebrew</option>
@@ -20,33 +21,35 @@
                 </div>
             </div>
             <div class="flex" style="margin-top: 30px;">
-                <input id="search-text-input" type="text" placeholder="2PAC is still alive..." style="min-width: 600px; padding: 6px;"/>
+                <input id="search-text-input" type="text" placeholder="2PAC IS STILL ALIVE"/>
                 <div class="btn" onclick="runTextSearch()">SEARCH</div>
             </div>
-            <div id="video-search-container" style="margin-top: 20px;">
-                <div class="title">. FILE SEARCH .</div>
+            <div class="title">. . OR . .</div>
+            <div id="video-search-container">
                 <div class="flex">
                     <input id="video-file-input" type="file"/>
+                    <div class="btn" onclick="chooseFile()">CHOOSE FILE</div>
                 </div>
             </div>
-            <div style="margin-top: 10px;">
-                <input id="exact-checkbox" type="checkbox" checked/>Exact Match
-                <input id="flexible-checkbox" type="checkbox" checked/>Flexible
-            </div>
-            <div class="flex btn-container" style="margin-top: 10px;">
-                <div class="btn" onclick="findSubsForFile()">SEARCH</div>
-                <!-- <div class="btn" onclick="findSubsForFileInOs()">Find in OS</div> -->
-                <div class="flex" style="align-items: center; margin-left: 10px;">
-                    <div class="text-link" onclick="findSubsForFileInOs()">SEARCH ON OPENSUBTITLES</div>
+            <div id="file-search-step2" class="hidden" style="margin-top: 20px;">
+                <div class="flex btn-container">
+                    <div class="btn" onclick="findSubsForFile()">SEARCH</div>
+                    <!-- <div class="btn" onclick="findSubsForFileInOs()">Find in OS</div> -->
+                    <div class="flex" style="align-items: center; margin-left: 10px;">
+                        <div class="text-link" onclick="findSubsForFileInOs()">SEARCH ON OPENSUBTITLES</div>
+                    </div>
+                </div>
+                <div class="flex" style="margin-top: 15px; justify-content: center">
+                    <input id="exact-checkbox" type="checkbox" checked/>Exact Match
+                    <input id="flexible-checkbox" type="checkbox" checked style="margin-left: 15px;"/>Flexible
                 </div>
             </div>
-
-            <div>
-                <div id="text-results-container">
+            <div style="width: 100%; margin-top: 20px;">
+                <div id="text-results-container" class="results-container">
                     <div id="text-results" class="results"></div>
                 </div>
-                <div id="exact-results-container"></div>
-                <div id="flex-results-container"></div>
+                <div id="exact-results-container" class="results-container"></div>
+                <div id="flex-results-container" class="results-container"></div>
             </div>
         </div>
         <script src="lib/jquery.min.js"></script>

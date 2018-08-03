@@ -10,20 +10,28 @@ function init() {
         elems: getElems(),
     };
     g.loader = new Loader(g.elems.$resultsContainer);
+    g.elems.$videoFileInput.change(e => updateFileSearchStep2(e.target.value));
+}
+
+function updateFileSearchStep2(filename) {
+    const showFileSearchStep2 = filename !== '';
+    g.elems.$fileSearchStep2.toggle(showFileSearchStep2);
 }
 
 function findSubsForFile() {
+    const searchId = g.lastSearchId = generateSearchId();
+    clearResults();
     const file = getFile();
     if (!file) return;
     if (isExactSearch()) {
-        runExactSearch(file);
+        runExactSearch(file, searchId);
     }
     if (isFlexibleSearch()) {
-        runFlexibleSearch(file);
+        runFlexibleSearch(file, searchId);
     }
 }
 
-function runExactSearch(file) {
+function runExactSearch(file, searchId) {
     const $container = g.elems.$resultsContainer;
     const $out = $(`<div class="results"></div>`);
     $container.empty();
@@ -34,6 +42,7 @@ function runExactSearch(file) {
     $container.append(g.elems.$resultsTitle);
     g.loader.start();
     hash(file, (file, hash) => {
+        if (searchId !== g.lastSearchId) return;
         const data = { hash, file };
         findSubs(data, (subs) => {
             $out.empty();
@@ -55,13 +64,14 @@ function runExactSearch(file) {
     });
 }
 
-function runFlexibleSearch(file) {
+function runFlexibleSearch(file, searchId) {
     const $container = g.elems.$flexResultsContainer;
     const $out = $(`<div class="results"></div>`);
     $container.empty();
     const data = { query: createFlexibleQuery(file) };
     startFlexibleLoader($container, data.query);
     findSubs(data, (subs) => {
+        if (searchId !== g.lastSearchId) return;
         $out.empty();
         g.flexibleLoader.stop();
         g.elems.$flexResultsTitle.html(`Flexible Search Results for '${data.query}'`);
@@ -118,7 +128,13 @@ function flexSearchInOs(file, lang) {
     window.open(`https://www.opensubtitles.org/en/search2/sublanguageid-${lang}/moviename-${query}`);
 }
 
+function generateSearchId() {
+    return Date.now() + Math.random();
+}
+
 function runTextSearch() {
+    const searchId = g.lastSearchId = generateSearchId();
+    clearResults();
     const query = getSearchText();
     if (!query || query.length === 0) return;
     const $container = g.elems.$textResultsContainer;
@@ -127,6 +143,7 @@ function runTextSearch() {
     startTextResultLoader($container, query);
     const data = { query };
     findSubs(data, (subs) => {
+        if (searchId !== g.lastSearchId) return;
         $out.empty();
         g.textLoader.stop();
         g.elems.$textResultsTitle.html(`Search Results for '${data.query}'`);

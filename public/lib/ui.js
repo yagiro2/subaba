@@ -7,11 +7,13 @@ function getElems() {
         $langSelect: $('#lang-select'),
         $langSelect: $('#lang-select'),
         videoFileInput: document.getElementById('video-file-input'),
+        $videoFileInput: $('#video-file-input'),
         $flexResultsContainer: $('#flex-results-container'),
         $textResultsContainer: $('#text-results-container'),
         $textResults: $('#text-results'),
         $flexResults: $('#flex-results'),
         $textSearchInput: $('#search-text-input'),
+        $fileSearchStep2: $('#file-search-step2'),
     }
 }
 
@@ -71,4 +73,9 @@ function isFlexibleSearch() {
 function clearResults() {
     g.elems.$resultsContainer.empty();
     g.elems.$flexResultsContainer.empty();
+    g.elems.$textResultsContainer.empty();
+}
+
+function chooseFile() {
+    g.elems.$videoFileInput.click();
 }
