@@ -43,7 +43,7 @@ function startFlexibleLoader($container, query) {
     g.elems.$flexibleLoaderContainer = $flexibleLoaderContainer;
     g.flexibleLoader = new Loader($flexibleLoaderContainer);
     g.elems.$flexResultsTitle = $('<div class="results-msg">')
-            .append(`<span>Searching for '${query}'</span>`)
+            .append(`<span>Searching for <b>${query}</b></span>`)
             .append(g.elems.$flexibleLoaderContainer);
     $container.append(g.elems.$flexResultsTitle);
     g.flexibleLoader.start();
@@ -54,7 +54,7 @@ function startTextResultLoader($container, query) {
     g.elems.$textLoaderContainer = $loaderContainer;
     g.textLoader = new Loader($loaderContainer);
     g.elems.$textResultsTitle = $('<div class="results-msg">')
-            .append(`<span>Searching for '${query}'</span>`)
+            .append(`<span>Searching for <b>${query}</b></span>`)
             .append(g.elems.$textLoaderContainer);
     $container.append(g.elems.$textResultsTitle);
     g.textLoader.start();

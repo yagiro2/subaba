@@ -13,10 +13,13 @@
             <button onclick="login()"i>Login</button>
         </div>
         <div id="content">
-            <div class="logo">SUBABA</div>
+            <div class="logo">
+                <div class="logo-title">SUBABA</div>
+                <div class="logo-subtitle">Mamase, Mamasa, Mamacosa.</div>
+            </div>
             <div id="settings">
                 <div class="flex">
-                    <div style="margin-right: 5px;">Language</div>
+                    <div style="margin-right: 10px;">Language</div>
                     <select id="lang-select">
                         <option value="all">All Languages</option>
                         <option selected value="heb">Hebrew</option>
@@ -25,14 +28,17 @@
                 </div>
             </div>
             <div class="flex" style="margin-top: 30px;">
-                <input id="search-text-input" type="text" placeholder="2PAC IS STILL ALIVE"/>
-                <div class="btn" onclick="runTextSearch()">SEARCH</div>
+                <input id="search-text-input" type="text" placeholder="Shut the fuck up, Donny."/>
+                <div class="btn" onclick="runTextSearch()" style="height: 17px;">SEARCH</div>
             </div>
-            <div class="title">. . OR . .</div>
+            <div class="title"></div>
             <div id="video-search-container">
                 <div class="flex">
-                    <input id="video-file-input" type="file" onchange="handleFileInputChange(event)"/>
-                    <div class="btn" onclick="chooseFile()">CHOOSE FILE</div>
+                    <!-- <input id="video-file-input" type="file" onchange="handleFileInputChange(event)"/> -->
+                    <!-- <div class="btn" onclick="chooseFile()">CHOOSE FILE</div> -->
+                    <div id="drop-zone">
+                        <div>Drop file here</div>
+                    </div>
                 </div>
             </div>
             <div id="file-search-step2" class="hidden" style="margin-top: 20px;">
@@ -48,9 +54,7 @@
                     <input id="flexible-checkbox" type="checkbox" checked style="margin-left: 15px;"/>Flexible
                 </div>
             </div>
-            <div class="title">. . OR . .</div>
-            <div id="drop-zone">Drop file here</div>
-            <div style="width: 100%; margin-top: 20px;">
+            <div class="results-parent-container">
                 <div id="text-results-container" class="results-container">
                     <div id="text-results" class="results"></div>
                 </div>

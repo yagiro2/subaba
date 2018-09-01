@@ -47,12 +47,12 @@ function runExactSearch(file, searchId) {
             g.loader.stop();
             g.results = subs;
             const subsArr = Object.values(subs);
-            g.elems.$resultsTitle.html(`Exact Search Results`);
+            g.elems.$resultsTitle.html(`<span>Exact Search Results for <b>${file.name}</b></span>`);
             subsArr.forEach(sub => {
                 $out.append(createSubElem(sub));
             });
             if (subsArr.length === 0) {
-                $out.append('<div>No subtitles found.</div>');
+                $out.append('<div class="no-results-msg">No subtitles found.</div>');
             }
             $container.append($out);
         }, err => {
@@ -72,14 +72,14 @@ function runFlexibleSearch(file, searchId) {
         if (searchId !== g.lastSearchId) return;
         $out.empty();
         g.flexibleLoader.stop();
-        g.elems.$flexResultsTitle.html(`Flexible Search Results for '${data.query}'`);
+        g.elems.$flexResultsTitle.html(`<span>Flexible Search Results for <b>${data.query}</b></span>`);
         g.flexResults = subs;
         const subsArr = Object.values(subs);
         subsArr.forEach(sub => {
             $out.append(createSubElem(sub));
         });
         if (subsArr.length === 0) {
-            $out.append(`<div>No subtitles found in flexible search.</div>`);
+            $out.append(`<div class="no-results-msg">No subtitles found.</div>`);
         }
         $container.append($out);
     }, err => {
@@ -144,14 +144,14 @@ function runTextSearch() {
         if (searchId !== g.lastSearchId) return;
         $out.empty();
         g.textLoader.stop();
-        g.elems.$textResultsTitle.html(`Search Results for '${data.query}'`);
+        g.elems.$textResultsTitle.html(`<span>Search Results for <b>${data.query}</b></span>`);
         g.textResults = subs;
         const subsArr = Object.values(subs);
         subsArr.forEach(sub => {
             $out.append(createSubElem(sub));
         });
         if (subsArr.length === 0) {
-            $out.append(`<div>No subtitles found in text search.</div>`);
+            $out.append(`<div class="no-results-msg">No subtitles found.</div>`);
         }
         $container.append($out);
     }, err => {
