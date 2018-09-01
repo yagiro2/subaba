@@ -147,3 +147,19 @@ body, input, select {
 .results-container {
     width: 100%;
 }
+
+#drop-zone {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    padding: 50px;
+    font-size: 20px;
+    color: rgb(124, 124, 124);
+    /* background-color: pink; */
+    border: 5px dotted pink;
+}
+
+#drop-zone.visible {
+    /* opacity: 0.5; */
+    background-color: rgb(248, 228, 231);
+}

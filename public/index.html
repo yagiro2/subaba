@@ -3,7 +3,11 @@
         <link rel="stylesheet" href="index.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     </head>
-    <body>
+    <body
+        ondrop="handleFileDrop(event);"
+        ondragover="handleDragOver(event);"
+        onmouseout="handleMouseOut(event);"
+    >
         <div id="login" class="hidden">
             Password <input type="text">
             <button onclick="login()"i>Login</button>
@@ -27,7 +31,7 @@
             <div class="title">. . OR . .</div>
             <div id="video-search-container">
                 <div class="flex">
-                    <input id="video-file-input" type="file"/>
+                    <input id="video-file-input" type="file" onchange="handleFileInputChange(event)"/>
                     <div class="btn" onclick="chooseFile()">CHOOSE FILE</div>
                 </div>
             </div>
@@ -44,6 +48,8 @@
                     <input id="flexible-checkbox" type="checkbox" checked style="margin-left: 15px;"/>Flexible
                 </div>
             </div>
+            <div class="title">. . OR . .</div>
+            <div id="drop-zone">Drop file here</div>
             <div style="width: 100%; margin-top: 20px;">
                 <div id="text-results-container" class="results-container">
                     <div id="text-results" class="results"></div>

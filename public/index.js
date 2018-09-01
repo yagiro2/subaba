@@ -10,12 +10,10 @@ function init() {
         elems: getElems(),
     };
     g.loader = new Loader(g.elems.$resultsContainer);
-    g.elems.$videoFileInput.change(e => updateFileSearchStep2(e.target.value));
 }
 
-function updateFileSearchStep2(filename) {
-    const showFileSearchStep2 = filename !== '';
-    g.elems.$fileSearchStep2.toggle(showFileSearchStep2);
+function updateFileSearchStep2(file) {
+    !!file ? g.elems.$fileSearchStep2.show() : g.elems.$fileSearchStep2.hide();
 }
 
 function findSubsForFile() {

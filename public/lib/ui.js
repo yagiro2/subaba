@@ -14,14 +14,12 @@ function getElems() {
         $flexResults: $('#flex-results'),
         $textSearchInput: $('#search-text-input'),
         $fileSearchStep2: $('#file-search-step2'),
+        $dropZone: $('#drop-zone'),
     }
 }
 
 function getFile() {
-    const input = g.elems.videoFileInput;
-    const fileList = input ? input.files : undefined;
-    const file = fileList && fileList.length > 0 ? fileList[0] : null;
-    return file;
+    return g.selectedFile;
 }
 
 function getLang() {
@@ -76,6 +74,60 @@ function clearResults() {
     g.elems.$textResultsContainer.empty();
 }
 
+function handleFileInputChange(e) {
+    const file = e.target.files && e.target.files[0];
+    setSelectedFile(file);
+}
+
 function chooseFile() {
     g.elems.$videoFileInput.click();
+}
+
+function setSelectedFile(file) {
+    g.selectedFile = file;
+    if (file) {
+        findSubsForFile();
+    }
+    updateFileSearchStep2(file);
+}
+
+function handleFileDrop(e) {
+    e.preventDefault();
+    console.log('drop', e);
+    g.dragOver = true;
+    g.elems.$dropZone.removeClass('visible');
+
+    const items = e.dataTransfer.items;
+    if (items) {
+        // Use DataTransferItemList interface to access the file(s)
+        for (let i = 0; i < items.length; ++i) {
+            const item = items[i];
+            if (item.kind === 'file') {
+                const file = item.getAsFile();
+                console.log('file' + file);
+                setSelectedFile(file);
+                break; // allow single file only
+            }
+        }
+      } else {
+        // Use DataTransfer interface to access the file(s)
+        const files = e.dataTransfer.files;
+        files.forEach(file => {
+            console.log('FILE' + file);
+        });
+      } 
+}
+
+function handleDragOver(e) {
+    e.preventDefault();
+    if (!g.dragOver) {
+        g.dragOver = true;
+        g.elems.$dropZone.addClass('visible');
+        console.log('dragover', e);
+    }
+}
+
+function handleMouseOut(e) {
+    g.dragOver = false;
+    g.elems.$dropZone.removeClass('visible');
 }
