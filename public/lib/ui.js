@@ -15,6 +15,8 @@ function getElems() {
         $textSearchInput: $('#search-text-input'),
         $fileSearchStep2: $('#file-search-step2'),
         $dropZone: $('#drop-zone'),
+        $dropZoneMsg: $('#drop-zone-msg'),
+        $fileRetryBtn: $('#file-retry-btn'),
     }
 }
 
@@ -86,9 +88,15 @@ function chooseFile() {
 function setSelectedFile(file) {
     g.selectedFile = file;
     if (file) {
+        g.elems.$dropZoneMsg.html(file.name);
+        g.elems.$fileRetryBtn.show();
         findSubsForFile();
     }
-    updateFileSearchStep2(file);
+    else {
+        g.elems.$fileRetryBtn.hide();
+        g.elems.$dropZoneMsg.html('Drop file here');
+    }
+    // updateFileSearchStep2(file);
 }
 
 function handleFileDrop(e) {

@@ -125,6 +125,13 @@ body, input, select {
 .text-link {
     cursor: pointer;
     color: #fb80d0;
+    padding: 15px;
+    font-size: 15px;
+}
+
+.text-link:hover {
+    background-color: #fff9f9;
+    /* border: 3px solid #333; */
 }
 
 #search-text-input {
@@ -135,22 +142,26 @@ body, input, select {
 }
 
 .results-container {
-    width: 80%;
+    width: 60%;
     margin-bottom: 20px;
 }
 
 #drop-zone {
     display: flex;
-    justify-content: center;
-    padding: 100px;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px;
     font-size: 20px;
     color: #444;
     border: 5px dotted #333;;
-    margin-left: 50px;
 }
 
 #drop-zone.visible {
     background-color: rgb(255, 239, 168);
+}
+
+#drop-zone-msg {
+    margin-bottom: 10px;
 }
 
 .no-results-msg {
