@@ -139,3 +139,8 @@ function handleMouseOut(e) {
     g.dragOver = false;
     g.elems.$dropZone.removeClass('visible');
 }
+
+function handleFileRetryClick(e) {
+    e.stopPropagation();
+    findSubsForFile();
+}

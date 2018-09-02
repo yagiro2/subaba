@@ -38,12 +38,12 @@
                         <input id="video-file-input" type="file" onchange="handleFileInputChange(event)"/>
                         <div class="btn" onclick="chooseFile()">CHOOSE FILE</div>
                     </div>
-                    <div id="drop-zone">
+                    <div id="drop-zone" class="clickable" onclick="chooseFile()">
                         <div id="drop-zone-msg">Drop file here</div>
                         <div
                             id="file-retry-btn"
                             class="text-link"
-                            onclick="findSubsForFile()"
+                            onclick="handleFileRetryClick(event)"
                             style="display: none;"
                         >
                             TRY AGAIN
