@@ -168,3 +168,9 @@ body, input, select {
     margin-top: 5px;
     font-size: 15px;
 }
+
+#file-input-container { display: none; }
+
+@media only screen and (max-width: 760px) {
+    #file-input-container { display: flex; margin-bottom: 20px; }
+}

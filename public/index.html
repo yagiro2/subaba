@@ -33,9 +33,11 @@
             </div>
             <div class="title"></div>
             <div id="video-search-container">
-                <div class="flex">
-                    <!-- <input id="video-file-input" type="file" onchange="handleFileInputChange(event)"/> -->
-                    <!-- <div class="btn" onclick="chooseFile()">CHOOSE FILE</div> -->
+                <div class="flex" style="flex-direction:column;">
+                    <div id="file-input-container">
+                        <input id="video-file-input" type="file" onchange="handleFileInputChange(event)"/>
+                        <div class="btn" onclick="chooseFile()">CHOOSE FILE</div>
+                    </div>
                     <div id="drop-zone">
                         <div id="drop-zone-msg">Drop file here</div>
                         <div
