@@ -10,6 +10,11 @@ function init() {
         elems: getElems(),
     };
     g.loader = new Loader(g.elems.$resultsContainer);
+    searchOnEnterKeyPress();
+}
+
+function searchOnEnterKeyPress() {
+    document.onkeypress = event => { event.key === 'Enter' && runTextSearch(); return true; };
 }
 
 function updateFileSearchStep2(file) {

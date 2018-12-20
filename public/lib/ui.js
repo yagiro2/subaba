@@ -36,7 +36,7 @@ function createSubElem(sub) {
         .addClass('sub')
         .append($lang)
         .append($filename)
-        .click(event => window.open(sub.url));
+        .click(event => location.href = sub.url);
     return $sub;
 }
 
