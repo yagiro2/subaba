@@ -17,6 +17,7 @@ function getElems() {
         $dropZone: $('#drop-zone'),
         $dropZoneMsg: $('#drop-zone-msg'),
         $fileRetryBtn: $('#file-retry-btn'),
+        $logoSubtitle: $('.logo-subtitle'),
     }
 }
 
@@ -143,4 +144,41 @@ function handleMouseOut(e) {
 function handleFileRetryClick(e) {
     e.stopPropagation();
     findSubsForFile();
+}
+
+const logoSubtitles = [
+    'I drink your milkshake!',
+    `Zed's dead, baby. Zed's dead.`,
+    'They call it a Royale with cheese.',
+    'Just when I thought I was out, they pull me back in.',
+    'Yo, Adrian!',
+    `First things first! Where's the shitter?`,
+    'So, you guys like to tell jokes and giggle and kid around, huh?',
+    `Oh man, I shot Marvin in the face.`,
+    `What do you mean "look in the dog?"`,
+    `And now, little man, I give the watch to you.`,
+    `I mean, funny like I'm a clown? I amuse you?`,
+    `The Dude abides.`,
+    `Here's Johnny!`,
+    `Yippie-ki-yay, motherfucker!`,
+    `You can't handle the truth!`,
+    `Alright meow where were we?`,
+    `I want a God-dam litre of cola!`,
+    `You mean Shenanigans?`,
+    `Alright, who wants a moustache ride?`,
+    `YOU BOYS LIKE MEX-E-CO?!?! YEEEEEEEEEEEEEEEEEEEEEEEEE!`,
+    `Canada, eh? Almost made it.`,
+    `Mother of God.`,
+    `I am all that is MAN!`,
+    `Sorry about that, Bruce. These boys get that syrup in 'em, they get all antsy in their pantsy.`,
+    `What do you mean "look in the dog?"`,
+    `Do you like dags?`,
+    `Should I call you Bullet? Tooth?`,
+    `Well, if this is it, old boy, I hope you don't mind if I go out speaking the King's.`,
+    `Oooh, that's a bingo! Is that the way you say it?`,
+    `Frankly, my dear, I don't give a damn.`,
+];
+
+function setRandomLogoSubtitle() {
+    g.elems.$logoSubtitle.text(`"${ getRandomItem(logoSubtitles) }"`);
 }

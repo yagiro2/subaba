@@ -11,6 +11,7 @@ function init() {
     };
     g.loader = new Loader(g.elems.$resultsContainer);
     searchOnEnterKeyPress();
+    setRandomLogoSubtitle();
 }
 
 function searchOnEnterKeyPress() {
