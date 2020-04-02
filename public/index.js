@@ -12,6 +12,7 @@ function init() {
     g.loader = new Loader(g.elems.$resultsContainer);
     searchOnEnterKeyPress();
     setRandomLogoSubtitle();
+    g.elems.$textSearchInput.focus();
 }
 
 function searchOnEnterKeyPress() {
