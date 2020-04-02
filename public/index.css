@@ -158,11 +158,12 @@ body, input, select {
     padding: 60px;
     font-size: 20px;
     color: #444;
-    border: 5px dotted #333;;
+    border: 3px dotted rgb(182, 182, 182);;
+    transition: background-color .7s;
 }
 
 #drop-zone.visible {
-    background-color: rgb(255, 239, 168);
+    background-color: #f9f9f9;
 }
 
 #drop-zone-msg {
