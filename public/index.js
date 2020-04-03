@@ -13,6 +13,7 @@ function init() {
     searchOnEnterKeyPress();
     setRandomLogoSubtitle();
     g.elems.$textSearchInput.focus();
+    renderLangSelector('#lang-selector');
 }
 
 function searchOnEnterKeyPress() {
@@ -40,7 +41,7 @@ function runExactSearch(file, searchId) {
     const $container = g.elems.$resultsContainer;
     const $out = $(`<div class="results"></div>`);
     $container.empty();
-    g.elems.$resultsTitle = $(`<div class="results-msg"><span>Searching</span></div>`);
+    g.elems.$resultsTitle = $(`<div class="results-msg"><div>Running EXACT search</span></div>`);
     g.elems.$resultsLoader = $(`<span>`);
     g.loader = new Loader(g.elems.$resultsLoader);
     g.elems.$resultsTitle.append(g.elems.$resultsLoader);
@@ -54,7 +55,7 @@ function runExactSearch(file, searchId) {
             g.loader.stop();
             g.results = subs;
             const subsArr = Object.values(subs);
-            g.elems.$resultsTitle.html(`<span>Exact Search Results for <b>${file.name}</b></span>`);
+            g.elems.$resultsTitle.html(`<div><span class="search-results-type">EXACT</span> Results</div><div class="search-subject-label exact">${file.name}</div>`);
             subsArr.forEach(sub => {
                 $out.append(createSubElem(sub));
             });
@@ -79,7 +80,7 @@ function runFlexibleSearch(file, searchId) {
         if (searchId !== g.lastSearchId) return;
         $out.empty();
         g.flexibleLoader.stop();
-        g.elems.$flexResultsTitle.html(`<span>Flexible Search Results for <b>${data.query}</b></span>`);
+        g.elems.$flexResultsTitle.html(`<div><span class="search-results-type">FLEXIBLE</span> Results</div><div class="search-subject-label flexible">${data.query}</div>`);
         g.flexResults = subs;
         const subsArr = Object.values(subs);
         subsArr.forEach(sub => {
@@ -151,7 +152,7 @@ function runTextSearch() {
         if (searchId !== g.lastSearchId) return;
         $out.empty();
         g.textLoader.stop();
-        g.elems.$textResultsTitle.html(`<span>Search Results for <b>${data.query}</b></span>`);
+        g.elems.$textResultsTitle.html(`<div>Subtitles</div><div class="search-subject-label text">${data.query}</div>`);
         g.textResults = subs;
         const subsArr = Object.values(subs);
         subsArr.forEach(sub => {

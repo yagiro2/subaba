@@ -5,7 +5,6 @@ function getElems() {
         $flexibleCheckbox: $('#flexible-checkbox'),
         $exactCheckbox: $('#exact-checkbox'),
         $langSelect: $('#lang-select'),
-        $langSelect: $('#lang-select'),
         videoFileInput: document.getElementById('video-file-input'),
         $videoFileInput: $('#video-file-input'),
         $flexResultsContainer: $('#flex-results-container'),
@@ -26,13 +25,14 @@ function getFile() {
 }
 
 function getLang() {
-    return g.elems.$langSelect.val();
+    return langSelector.getSelectedLangCode();
 }
 
 function createSubElem(sub) {
     const $sub = $('<div>');
-    const $lang = $(`<div style="width: 200px;">${sub.lang}</div>`)
+    const $lang = $(`<div style="width: 15vw; min-width: 15vw; max-width: 200px;">${sub.lang}</div>`)
     const $filename = $(`<div>${sub.filename}</div>`)
+    $filename.addClass('sub-filename');
     $sub
         .addClass('sub')
         .append($lang)
@@ -46,7 +46,7 @@ function startFlexibleLoader($container, query) {
     g.elems.$flexibleLoaderContainer = $flexibleLoaderContainer;
     g.flexibleLoader = new Loader($flexibleLoaderContainer);
     g.elems.$flexResultsTitle = $('<div class="results-msg">')
-            .append(`<span>Searching for <b>${query}</b></span>`)
+            .append(`<div>Running FLEXIBLE search: ${query}</div>`)
             .append(g.elems.$flexibleLoaderContainer);
     $container.append(g.elems.$flexResultsTitle);
     g.flexibleLoader.start();
@@ -57,7 +57,7 @@ function startTextResultLoader($container, query) {
     g.elems.$textLoaderContainer = $loaderContainer;
     g.textLoader = new Loader($loaderContainer);
     g.elems.$textResultsTitle = $('<div class="results-msg">')
-            .append(`<span>Searching for <b>${query}</b></span>`)
+            .append(`<div>Running search: ${query}</div>`)
             .append(g.elems.$textLoaderContainer);
     $container.append(g.elems.$textResultsTitle);
     g.textLoader.start();

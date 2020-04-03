@@ -1,6 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="lang-selector.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     </head>
     <body
@@ -8,20 +9,14 @@
         ondragover="handleDragOver(event);"
         onmouseout="handleMouseOut(event);"
     >
+    
         <div id="content">
             <div class="logo">
-                <div class="logo-title">SUBABA</div>
+                <div class="logo-title">SUBABA.</div>
                 <div class="logo-subtitle"></div>
             </div>
             <div id="settings">
-                <div class="flex">
-                    <div style="margin-right: 10px;">Language</div>
-                    <select id="lang-select">
-                        <option value="all">All Languages</option>
-                        <option selected value="heb">Hebrew</option>
-                        <option value="eng">English</option>
-                    </select>
-                </div>
+                <div id="lang-selector"></div>
             </div>
             <div class="flex" style="margin-top: 30px;">
                 <input id="search-text-input" type="text" placeholder=""/>
@@ -34,7 +29,7 @@
                         <input id="video-file-input" type="file" onchange="handleFileInputChange(event)"/>
                         <div class="btn" onclick="chooseFile()">CHOOSE FILE</div>
                     </div>
-                    <div id="drop-zone" class="clickable visible" onclick="chooseFile()">
+                    <div id="drop-zone" class="clickable" onclick="chooseFile()">
                         <div id="drop-zone-msg">Drop Video File Anywhere</div>
                         <div
                             id="file-retry-btn"
@@ -76,6 +71,7 @@
         <script src="lib/ui.js"></script>
         <script src="lib/api.js"></script>
         <script src="lib/utils.js"></script>
+        <script src="lib/langSelector.js"></script>
         <script src="index.js"></script>
     </body>
 </html>
