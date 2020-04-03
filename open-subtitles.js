@@ -1,5 +1,4 @@
 const OS = require('opensubtitles-api');
-const path = require('path');
 
 const OpenSubtitles = new OS({
     useragent:'TemporaryUserAgent',

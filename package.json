@@ -1,22 +1,20 @@
 {
-  "name": "open-subtitles-client",
+  "name": "yakircv-be",
   "version": "1.0.0",
   "description": "",
-  "main": "osc.js",
+  "main": "index.js",
   "scripts": {
-    "start": "babel-node index --presets es2015",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec npm run start"
+    "build": "./build.sh",
+    "start": "node index"
   },
-  "author": "",
+  "engines": {
+    "node": "10.15.0"
+  },
+  "author": "yagiro",
   "license": "ISC",
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "express": "^4.16.3",
-    "opensubtitles-api": "^4.1.0"
-  },
-  "devDependencies": {
-    "nodemon": "^1.18.3"
+    "express": "^4.17.1",
+    "opensubtitles-api": "^5.1.0"
   }
 }
