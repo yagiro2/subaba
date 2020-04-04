@@ -1,6 +1,21 @@
 import React, { useState, useCallback } from 'react';
+import styled from 'styled-components';
+
 import TextInput from './common/TextInput';
 import Button from './common/Button';
+
+const Container = styled.div`
+    display: flex;
+`;
+
+const StyledTextInput = styled(TextInput)`
+    min-width: 40vw;
+    outline: none;
+`;
+
+const StyledButton = styled(Button)`
+    margin-left: -1px;
+`;
 
 const SearchBox = (props) => {
 
@@ -8,17 +23,21 @@ const SearchBox = (props) => {
 
     const [ query, setQuery ] = useState();
     const handleChange = useCallback(e => setQuery(e.target.value), [ setQuery ]);
-    const handleClick = useCallback(() => onSearch && onSearch(query), [ query, onSearch ]);
+    const handleSearchRequest = useCallback(() => onSearch && onSearch(query), [ query, onSearch ]);
 
     return (
-        <div>
-            <TextInput onChange={ handleChange }/>
-            <Button
-                label="Search"
-                disabled={ !query }
-                onClick={ handleClick }
+        <Container>
+            <StyledTextInput
+                onChange={ handleChange }
+                placeholder="what?"
+                onEnter={ handleSearchRequest }
             />
-        </div>
+            <StyledButton
+                label="search"
+                disabled={ !query }
+                onClick={ handleSearchRequest }
+            />
+        </Container>
     );
 }
 

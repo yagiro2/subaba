@@ -1,23 +1,18 @@
-import React, { useCallback, useState } from 'react';
-import './App.css';
-import SearchBox from './components/SearchBox';
+import React from 'react';
+import styled from 'styled-components';
+import Skeleton from './components/skeleton/Skeleton';
 
-import { searchSubtitleByQuery } from './api.js';
+const Container = styled.div`
+  display: flex;
+  width: 100vw;
+  padding: 3vw;
+`;
 
 function App() {
-
-  const [ res, setRes ] = useState();
-
-  const handleSearch = useCallback(query => {
-    searchSubtitleByQuery(query)
-      .then(json => setRes(json))
-  }, [ setRes ]);
-
   return (
-    <div>
-        <SearchBox onSearch={ handleSearch }/>
-        <div>{ JSON.stringify(res) }</div>
-    </div>
+    <Container>
+        <Skeleton/>
+    </Container>
   );
 }
 
