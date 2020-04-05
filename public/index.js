@@ -54,7 +54,7 @@ function runExactSearch(file, searchId) {
             $out.empty();
             g.loader.stop();
             g.results = subs;
-            const subsArr = Object.values(subs);
+            const subsArr = subs;
             g.elems.$resultsTitle.html(`<div><span class="search-results-type">EXACT</span> Results</div><div class="search-subject-label exact">${file.name}</div>`);
             subsArr.forEach(sub => {
                 $out.append(createSubElem(sub));
@@ -82,7 +82,7 @@ function runFlexibleSearch(file, searchId) {
         g.flexibleLoader.stop();
         g.elems.$flexResultsTitle.html(`<div><span class="search-results-type">FLEXIBLE</span> Results</div><div class="search-subject-label flexible">${data.query}</div>`);
         g.flexResults = subs;
-        const subsArr = Object.values(subs);
+        const subsArr = subs;
         subsArr.forEach(sub => {
             $out.append(createSubElem(sub));
         });
@@ -154,7 +154,7 @@ function runTextSearch() {
         g.textLoader.stop();
         g.elems.$textResultsTitle.html(`<div>Subtitles</div><div class="search-subject-label text">${data.query}</div>`);
         g.textResults = subs;
-        const subsArr = Object.values(subs);
+        const subsArr = subs;
         subsArr.forEach(sub => {
             $out.append(createSubElem(sub));
         });

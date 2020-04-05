@@ -30,8 +30,8 @@ function getLang() {
 
 function createSubElem(sub) {
     const $sub = $('<div>');
-    const $lang = $(`<div style="width: 15vw; min-width: 15vw; max-width: 200px;">${sub.lang}</div>`)
-    const $filename = $(`<div>${sub.filename}</div>`)
+    const $lang = $(`<div style="width: 15vw; min-width: 15vw; max-width: 200px;">${sub.LanguageName}</div>`)
+    const $filename = $(`<div>${sub.SubFileName}</div>`)
     $filename.addClass('sub-filename');
     $sub
         .addClass('sub')
