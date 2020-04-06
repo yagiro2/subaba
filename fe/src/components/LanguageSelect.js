@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import RadioButtons from './common/radio/RadioButtons';
+import { useSelector, useDispatch } from 'react-redux';
+import { getSelectedLanguageCode } from '../reducers/rootReducer';
+import { setLanguage } from '../actions';
 
 const createLanguage = (id, label) => ({ id, label });
 
@@ -11,12 +14,13 @@ const languages = [
 ];
 
 const LanguageSelect = () => {
-    const [ langId, setLangId ] = useState('heb');
+    const selectedLanguageCode = useSelector(getSelectedLanguageCode);
+    const dispatch = useDispatch();
     return (
         <RadioButtons
             options={ languages }
-            selectedOptionId={ langId }
-            onChange={ ({ id }) => setLangId(id) }
+            selectedOptionId={ selectedLanguageCode }
+            onChange={ ({ id }) => dispatch(setLanguage(id)) }
         />
     );
 }

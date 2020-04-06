@@ -1,0 +1,23 @@
+const vipLanguages = [ 'Hebrew', 'English' ];
+
+const vipLanguagesObj = {};
+vipLanguages.forEach((lang, i) =>
+    vipLanguagesObj[lang] = ({ LanguageName: lang.LanguageName, sortLevel: i + 1 }));
+
+export const sortSubsArrByVipAndAlphabet = subsArr => {
+    const sortedSubsArr = subsArr
+        .map(sub => {
+            /** give each sub a sort level */
+            const vipLang = vipLanguagesObj[sub.LanguageName];
+            return { ...sub, sortLevel: !vipLang ? vipLanguages.length + 1 : vipLang.sortLevel };
+        })
+        .sort((sub1, sub2) => {
+            /** return the sub with lowest sortLevel, and if equal - sort alphabetically */
+            if (sub1.sortLevel < sub2.sortLevel) return -1;
+            if (sub2.sortLevel < sub1.sortLevel) return 1;
+            return sub1.LanguageName <= sub2.LanguageName ? -1 : 1;
+    
+        });
+    
+    return sortedSubsArr;
+};

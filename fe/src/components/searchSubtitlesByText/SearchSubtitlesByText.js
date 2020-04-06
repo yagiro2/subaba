@@ -1,9 +1,12 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { searchSubtitleByQuery } from '../../api.js';
+import { searchSubtitleByQuery } from '../../api/api.js';
 import SearchBox from '../SearchBox';
 import Subtitle from '../common/Subtitle';
+import { getSelectedLanguageCode } from '../../reducers/rootReducer';
+import { sortSubsArrByVipAndAlphabet } from '../../utils';
 
 const Container = styled.div`
     > :not(:first-child) {
@@ -20,19 +23,21 @@ const Results = styled.div`
     }
 `;
 
-const normalizeResultsResponse = subsRes => {
-    return Object.values(subsRes);
+const normalizeResultsResponse = subsArr => {
+    const sortedSubsArr = sortSubsArrByVipAndAlphabet(subsArr);
+    return sortedSubsArr;
 };
 
 const SearchSubtitlesByText = () => {
 
     const [ results, setResults ] = useState([]);
+    const selectedLanguageCode = useSelector(getSelectedLanguageCode);
 
     const handleSearch = useCallback(query => {
-      searchSubtitleByQuery(query)
+      searchSubtitleByQuery(query, selectedLanguageCode)
         .then(normalizeResultsResponse)
         .then(setResults)
-    }, [ setResults ]);
+    }, [ setResults, selectedLanguageCode ]);
 
     return (
         <Container>

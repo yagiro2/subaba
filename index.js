@@ -19,13 +19,9 @@ app.use(express.static(path.resolve(feBuildPath)));
 
 
 app.get('/api/subs', (req, res) => {
-    const osQuery = createOsQuery(req.query);
-    openSubtitlesClient.findSubs(osQuery)
-        .then(subs => res.json(subs))
-        .catch(err => {
-            console.log('[OSAC:ERROR]',err);
-            return res.json(err);
-        });
+    openSubtitlesClient.findSubs(req.query)
+        .then(osRes => res.send(osRes))
+        .catch(error => res.send({ success: false, error }));
 });
 
 app.listen(port, () => {

@@ -1,21 +1,12 @@
-const baseUrl = 'https://subaba-stg.herokuapp.com/api';
-const createUrl = relativeUrl => baseUrl + relativeUrl;
+/*
+request examples:
+curl -A 'TemporaryUserAgent'  https://rest.opensubtitles.org/search/moviebytesize-750005572/moviehash-319b23c54e9cf314
+curl -A 'TemporaryUserAgent'  https://rest.opensubtitles.org/search/episode-20/imdbid-4145054/moviebytesize-750005572/moviehash-319b23c54e9cf314/season-2/sublanguageid-eng
+curl -A 'TemporaryUserAgent'  https://rest.opensubtitles.org/search/episode-11/imdbid-4145054/season-1/tags-web-dl
+curl -A 'TemporaryUserAgent'  https://rest.opensubtitles.org/search/query-matrix%20reloaded/sublanguageid-eng
+curl -A 'TemporaryUserAgent'  https://rest.opensubtitles.org/search/episode-8/sublanguageid-eng/tag-heroess01e08
+*/
 
-// todo: uncomment!!
-// export const searchSubtitleByQuery = (query, langCode = 'heb') => {
-//     return fetch(createUrl(`/subs?lang=${ langCode }&query=${ query }`))
-//         .then(res => res.json());
-// };
-
-// todo: remove!
-export const searchSubtitleByQuery = (query, langCode = 'all') => {
-
-    return new Promise(resolve => setTimeout(() => resolve(mockRes) ,1000));
-
-    // return Promise.resolve(mockRes);
-};
-
-// todo: remove move res
 const mockRes = {
     "en": {
       "url": "https://dl.opensubtitles.org/en/download/src-api/vrf-19b50c59/sid-gg,NrTQnCvB1tHVI8DndrHjLDl9/filead/1953237819",
@@ -48,3 +39,8 @@ const mockRes = {
       "vtt": "https://dl.opensubtitles.org/en/download/subformat-vtt/src-api/vrf-198c0c53/sid-gg,NrTQnCvB1tHVI8DndrHjLDl9/filead/1952031489"
     }
   };
+
+
+export const searchSubtitleByQuery = (query, langCode = 'all') => {
+    return new Promise(resolve => setTimeout(() => resolve(mockRes) ,1000));
+};

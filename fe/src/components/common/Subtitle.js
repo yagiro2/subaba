@@ -35,17 +35,17 @@ const Language = styled.div`
 
 const ellipsisTextOverflowMixin = createEllipsisTextOverflowMixin('90vw');
 
-const Filename = styled.div`
+const Description = styled.div`
     ${ ellipsisTextOverflowMixin }
 `;
 
 const Subtitle = (props) => {
-    const { lang, filename, url } = props;
+    const { LanguageName, MovieReleaseName, SubDownloadLink, SubFileName } = props;
     return (
-        <StyledA href={ url }>
+        <StyledA href={ SubDownloadLink }>
             <Container>
-                <Language>{ lang }</Language>
-                <Filename>{ filename }</Filename>
+                <Language>{ LanguageName }</Language>
+                <Description>{ SubFileName }</Description>
             </Container>
         </StyledA>
     );

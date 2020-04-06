@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Provider } from 'react-redux';
 import Skeleton from './components/skeleton/Skeleton';
+import configureStore from './configureStore';
+
+const store = configureStore();
 
 const Container = styled.div`
   display: flex;
@@ -10,9 +14,11 @@ const Container = styled.div`
 
 function App() {
   return (
-    <Container>
-        <Skeleton/>
-    </Container>
+    <Provider store={ store }>
+      <Container>
+          <Skeleton/>
+      </Container>
+    </Provider>
   );
 }
 
