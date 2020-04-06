@@ -37,7 +37,7 @@ function createSubElem(sub) {
         .addClass('sub')
         .append($lang)
         .append($filename)
-        .click(event => location.href = sub.url);
+        .click(event => location.href = sub.SubDownloadLink);
     return $sub;
 }
 
