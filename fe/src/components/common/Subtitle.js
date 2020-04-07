@@ -40,12 +40,12 @@ const Description = styled.div`
 `;
 
 const Subtitle = (props) => {
-    const { LanguageName, MovieReleaseName, SubDownloadLink, SubFileName } = props;
+    const { LanguageName, SubDownloadLink, description } = props;
     return (
         <StyledA href={ SubDownloadLink }>
             <Container>
                 <Language>{ LanguageName }</Language>
-                <Description>{ SubFileName }</Description>
+                <Description>{ description }</Description>
             </Container>
         </StyledA>
     );
