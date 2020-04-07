@@ -29,3 +29,5 @@ export function getRandomInt(max, min = 0) {
 export function getRandomItem(arr) {
     return arr[getRandomInt(arr.length - 1)];
 }
+
+export const removeExtenstion = filename => filename.substring(0, filename.lastIndexOf('.'));

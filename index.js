@@ -20,7 +20,7 @@ app.use(express.static(path.resolve(feBuildPath)));
 
 app.get('/api/subs', (req, res) => {
     openSubtitlesClient.findSubs(req.query)
-        .then(osRes => res.send(osRes))
+        .then(osRes => res.send({ success: true, data: osRes }))
         .catch(error => res.send({ success: false, error }));
 });
 

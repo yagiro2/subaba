@@ -6,7 +6,7 @@ import { searchSubtitleByQuery } from '../../api/api.js';
 import SearchBox from '../SearchBox';
 import Subtitle from '../common/Subtitle';
 import { getSelectedLanguageCode } from '../../reducers/rootReducer';
-import { sortSubsArrByVipAndAlphabet } from '../../lib/utils';
+import { sortSubsArrByVipAndAlphabet, removeExtenstion } from '../../lib/utils';
 import Loader from '../common/Loader.js';
 import NoSubtitles from '../common/NoSubtitles';
 import usePrev from '../../hooks/usePrev';
@@ -27,11 +27,6 @@ const Results = styled.div`
         margin-top: 10px;
     }
 `;
-
-const normalizeResultsResponse = subsArr => {
-    const sortedSubsArr = sortSubsArrByVipAndAlphabet(subsArr);
-    return sortedSubsArr;
-};
 
 const renderResults = (subsArr, fetching) => {
     if (fetching !== undefined && (!subsArr || !subsArr.length)) {
@@ -66,7 +61,7 @@ const SearchSubtitlesByText = () => {
         setLatestQuery(query);
         setFetching(true);
         searchSubtitleByQuery(query, selectedLanguageCode)
-            .then(normalizeResultsResponse)
+            .then(normalizeSubtitlesResponse)
             .then(setResults)
             .finally(() => setFetching(false));
     }, [ setResults, selectedLanguageCode ]);
