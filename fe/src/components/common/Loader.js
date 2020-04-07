@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 import logo from '../../assets/mia-vincent.png';
 
@@ -26,9 +28,9 @@ const Logo = styled.div`
 const Label = styled.div`
 `;
 
-const Loader = ({ label }) => {
+const Loader = ({ label, withVapeAnimation }) => {
     return (
-        <Container className="vape" height="100px">
+        <Container className={ classnames({ vape: withVapeAnimation }) } height="100px">
             <Logo className="spin">
                 <img src={logo} alt="loading" width="100px"/>
             </Logo>
@@ -36,5 +38,9 @@ const Loader = ({ label }) => {
         </Container>
     );
 }
+
+Loader.propTypes = {
+    withVapeAnimation: PropTypes.bool,
+};
 
 export default Loader;

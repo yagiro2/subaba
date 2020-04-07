@@ -21,3 +21,11 @@ export const sortSubsArrByVipAndAlphabet = subsArr => {
     
     return sortedSubsArr;
 };
+
+export function getRandomInt(max, min = 0) {
+    return Math.round(Math.random() * (max - min) + min);
+}
+
+export function getRandomItem(arr) {
+    return arr[getRandomInt(arr.length - 1)];
+}
