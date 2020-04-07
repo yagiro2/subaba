@@ -8,6 +8,7 @@ const Container = styled.div`
     > :not(:first-child) {
         margin-top: 20px;
     }
+    max-width: 100%;
 `;
 
 const Skeleton = () => {

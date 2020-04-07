@@ -9,7 +9,8 @@ const store = configureStore();
 const Container = styled.div`
   display: flex;
   width: 100vw;
-  padding: 3vw;
+  max-width: 100vw;
+  padding: 3vmin;
 `;
 
 function App() {

@@ -9,6 +9,7 @@ const childMargin = createChildMarginMixin('top', '20px');
 
 const Container = styled.div`
     ${ childMargin }
+    max-width: 100%;
 `;
 
 const Content = () => {

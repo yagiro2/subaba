@@ -22,6 +22,7 @@ const Container = styled.div`
     .extra-margin-top {
         margin-top: 60px;
     }
+    max-width: 100%;
 `;
 
 const Results = styled.div`
@@ -31,6 +32,7 @@ const Results = styled.div`
     & > :not(:first-child) {
         margin-top: 10px;
     }
+    max-width: 100%;
 `;
 
 const renderResults = (subsArr, fetching) => {

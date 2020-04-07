@@ -18,14 +18,15 @@ const Container = styled.div`
     :hover {
         background-color: #ff6969;
     }
+    max-width: 100%;
 `;
 
 const StyledA = styled(A)`
     display: flex;
     text-decoration: none;
     color: black;
+    max-width: 100%;
 `;
-
 
 const Language = styled.div`
     background-color: black;
@@ -33,7 +34,7 @@ const Language = styled.div`
     padding: 5px;
 `;
 
-const ellipsisTextOverflowMixin = createEllipsisTextOverflowMixin('90vw');
+const ellipsisTextOverflowMixin = createEllipsisTextOverflowMixin('100%');
 
 const Description = styled.div`
     ${ ellipsisTextOverflowMixin }
