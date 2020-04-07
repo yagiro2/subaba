@@ -22,6 +22,7 @@ const Sad = styled.div`
     > div {
         margin-bottom: -10px;
     }
+    user-select: none;
 `;
 
 const NoSubtitles = () => {
