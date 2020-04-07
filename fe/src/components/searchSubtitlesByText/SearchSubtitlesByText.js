@@ -6,7 +6,7 @@ import { searchSubtitleByQuery } from '../../api/api.js';
 import SearchBox from '../SearchBox';
 import Subtitle from '../common/Subtitle';
 import { getSelectedLanguageCode } from '../../reducers/rootReducer';
-import { sortSubsArrByVipAndAlphabet } from '../../utils';
+import { sortSubsArrByVipAndAlphabet } from '../../lib/utils';
 import Loader from '../common/Loader.js';
 import NoSubtitles from '../common/NoSubtitles';
 import usePrev from '../../hooks/usePrev';

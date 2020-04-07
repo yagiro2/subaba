@@ -1,4 +1,4 @@
-import { getRandomItem } from '../utils';
+import { getRandomItem } from '../lib/utils';
 
 export const getRandomQuote = () => getRandomItem(quotes);
 
