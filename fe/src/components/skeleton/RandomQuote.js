@@ -7,24 +7,29 @@ const childMargin = createChildMarginMixin('left', '2px');
 
 const Container = styled.div`
     display: flex;
-    align-items: flex-end;
-    ${ childMargin }
 `;
 
 const quote = getRandomQuote();
 
-const QuoteSign = styled((props) => (<div className={ props.className }>"</div>))`
+const QuoteSign = styled((props) => (<span className={ props.className }>"</span>))`
     font-size: 2rem;
-    line-height: 13px;
+    line-height: 18px;
+    // color: #5effc4; // #ff5e5e; // #b9b9b9;
+    line-height: ${ ({ lineHeight }) => lineHeight };
+    vertical-align: ${ ({ verticalAlign }) => verticalAlign };
+    margin-right: ${ ({ marginRight }) => marginRight };
+    margin-left: ${ ({ marginLeft }) => marginLeft };
 `;
 
 const RandomQuote = () => {
     return (
         <Container>
-            <QuoteSign/>
-            <div>{ quote }</div>
-            <QuoteSign/>
-        </Container>
+            <QuoteSign verticalAlign="top" lineHeight="18px" marginRight="5px"/>
+            <span>
+                { quote }
+                <QuoteSign verticalAlign="bottom" lineHeight="10px" marginLeft="5px"/>
+            </span>
+        </Container>    
     );
 }
 

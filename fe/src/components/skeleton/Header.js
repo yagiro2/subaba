@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import RandomQuote from './RandomQuote';
 import { createChildMarginMixin } from '../mixins/childMarginMixin';
 
-const childMargin = createChildMarginMixin('top', '5px');
+const childMargin = createChildMarginMixin('top', '10px');
 
 const Container = styled.div`
     ${ childMargin }
