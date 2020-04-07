@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { searchSubtitleByQuery } from '../../api/api.js';
 import SearchBox from '../SearchBox';
@@ -10,12 +10,17 @@ import { sortSubsArrByVipAndAlphabet, removeExtenstion } from '../../lib/utils';
 import Loader from '../common/Loader.js';
 import NoSubtitles from '../common/NoSubtitles';
 import usePrev from '../../hooks/usePrev';
+import H3 from '../typography/H3';
+import { normalizeSubtitlesResponse } from '../../adapter/subtitlesAdapter';
 
 const Container = styled.div`
     display: flex;
     flex-direction: column;
     > :not(:first-child) {
-        margin-top: 30px;
+        margin-top: 40px;
+    }
+    .extra-margin-top {
+        margin-top: 60px;
     }
 `;
 
@@ -30,10 +35,11 @@ const Results = styled.div`
 
 const renderResults = (subsArr, fetching) => {
     if (fetching !== undefined && (!subsArr || !subsArr.length)) {
-        return <NoSubtitles/>
+        return <div className="extra-margin-top"><NoSubtitles/></div>;
     }
     return (
         <Results>
+            { subsArr && !!subsArr.length && <H3>> results.</H3> }
             { subsArr.map((sub, i) => <Subtitle key={ i } { ...sub }/>) }
         </Results>
     );
@@ -71,7 +77,7 @@ const SearchSubtitlesByText = () => {
             <SearchBox onSearch={ handleSearch }/>
             {
                 fetching
-                    ? <Loader/>
+                    ? <div className="extra-margin-top"><Loader/></div>
                     : renderResults(results, fetching)
             }
         </Container>
