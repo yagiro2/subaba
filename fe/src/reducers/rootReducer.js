@@ -5,7 +5,17 @@ const defaultInitialState = {
 };
 
 const loadStateFromLocalStorage = () => {
-    return !localStorage.state ? defaultInitialState : JSON.parse(localStorage.state);
+    if (!localStorage.state) return defaultInitialState;
+    let stateFromLocalStorage;
+    try {
+        stateFromLocalStorage = JSON.parse(localStorage.state);
+    }
+    catch(e) { /* swallow */ }
+    if (!stateFromLocalStorage) return defaultInitialState;
+    const loadedState = {
+        selectedLanguageCode: stateFromLocalStorage.selectedLanguageCode,
+    };
+    return loadedState;
 };
 
 const initialState = loadStateFromLocalStorage();
