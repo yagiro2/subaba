@@ -1,15 +1,17 @@
-import React, { useCallback, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useCallback, useEffect, useState } from 'react';
+import styled, { css } from 'styled-components';
 import { useSelector } from 'react-redux';
 import useActions from '../../hooks/useActions';
+
+/*
+TODO:
+    flexible search
+    search results labels: exact/flex
+*/
+
 import osHash from '../../lib/osHash';
 import { searchSubtitlesByMovieHash } from '../../actions';
 import { getSelectedLanguageCode } from '../../reducers/rootReducer';
-
-function dragOverHandler(ev) {
-    // Prevent default behavior (Prevent file from being opened)
-    ev.preventDefault();
-}
 
 function getDroppedFilesFromDropEvent(ev) {
 
@@ -37,7 +39,14 @@ function getDroppedFilesFromDropEvent(ev) {
     return droppedFiles;
 }
 
-const marginVal = 2;
+const visibleCss = css`
+    border: 3px black dashed;
+    z-index: 3;
+    background-color: #fff700;
+    opacity: .5;
+`;
+
+const marginVal = 1;
 const marginUnit = 'vmin';
 const margin = marginVal + marginUnit;
 
@@ -49,36 +58,53 @@ const Container = styled.div`
     height: calc(100vh - ${ marginVal * 2 }${ marginUnit });
     top: ${ margin };
     left: ${ margin };
+    ${ ({ visible }) => !visible ? '' : visibleCss }
 `;
+
+const actionCreators = {
+    searchSubtitlesByMovieHash,
+};
 
 const FileDropSearch = () => {
 
     const selectedLanguageCode = useSelector(getSelectedLanguageCode);
-
-    const actions = useActions({ searchSubtitlesByMovieHash })
+    const actions = useActions(actionCreators)
+    const [ dragging, setDragging ] = useState(false);
 
     const searchByHash = useCallback(movieHash => {
         actions.searchSubtitlesByMovieHash(movieHash, selectedLanguageCode);
     }, [ actions, selectedLanguageCode ]);
 
+    const handleDragEnd = useCallback(() => {
+        setDragging(false);
+    }, [ setDragging ]);
+
+    const handleDragOver = useCallback((ev) => {
+        ev.preventDefault();
+        setDragging(true);
+    }, [ setDragging ]);
+
     const handleDrop = useCallback(ev => {
         // Prevent default behavior (Prevent file from being opened)
         ev.preventDefault();
+        
+        handleDragEnd();
         
         const files = getDroppedFilesFromDropEvent(ev);
         const firstFile = files && files[0];
         if (!firstFile) return;
         osHash(firstFile)
             .then(searchByHash);
-    }, [ searchByHash ]);
+    }, [ searchByHash, handleDragEnd ]);
 
     useEffect(() => {
         document.body.ondrop = handleDrop;
-        document.body.ondragover = dragOverHandler;
-    }, [ handleDrop ]);
+        document.body.ondragover = handleDragOver;
+        document.body.onmouseout = handleDragEnd;
+    }, [ handleDrop, handleDragOver, handleDragEnd ]);
 
     return (
-        <Container/>
+        <Container visible={ dragging }/>
     );
 }
 
