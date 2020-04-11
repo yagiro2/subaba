@@ -31,3 +31,13 @@ export function getRandomItem(arr) {
 }
 
 export const removeExtenstion = filename => filename.substring(0, filename.lastIndexOf('.'));
+
+export const buildQueryParamsJoin = queryParams => {
+    const queryParamsStr =
+        '?' +
+        Object.entries(queryParams)
+            .map(([ key, value ]) => `${ key }=${ value }`)
+            .join('&');
+    
+    return queryParamsStr;
+};

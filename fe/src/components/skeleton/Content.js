@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import SearchSubtitlesByText from '../searchSubtitlesByText/SearchSubtitlesByText';
 import LanguageSelect from '../LanguageSelect';
 import { createChildMarginMixin } from '../mixins/childMarginMixin';
+import FileDropSearch from '../fileDropSearch/FileDropSearch';
+import SearchResults from '../searchResults/SearchResults';
 
 const childMargin = createChildMarginMixin('top', '20px');
 
@@ -17,6 +19,8 @@ const Content = () => {
         <Container>
             <LanguageSelect/>
             <SearchSubtitlesByText/>
+            <FileDropSearch/>
+            <SearchResults/>
         </Container>
     );
 }

@@ -1,9 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { getRandomQuote } from '../../lib/randomQuotes';
-import { createChildMarginMixin } from '../mixins/childMarginMixin';
-
-const childMargin = createChildMarginMixin('left', '2px');
 
 const Container = styled.div`
     display: flex;
