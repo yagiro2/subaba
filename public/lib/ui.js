@@ -28,6 +28,21 @@ function getLang() {
     return langSelector.getSelectedLangCode();
 }
 
+function removeGzExtenstion(subDownloadLink) {
+    /**
+     * We remove the ".gz" from the end of the subtitle download link, to download the subtitle file directly
+     * 
+     * For example, here is a prestine SubDownloadLink:
+     * https://dl.opensubtitles.org/en/download/src-api/vrf-19c90c52/filead/1956732800.gz
+     * This function will return for the link above without the ".gz" extenstion, like so:
+     * https://dl.opensubtitles.org/en/download/src-api/vrf-19c90c52/filead/1956732800
+     * 
+     * If ".gz" is not found at the end of the link, it will remain the same.
+     * */
+
+     return subDownloadLink && subDownloadLink.replace(/\.gz$/, '');
+}
+
 function createSubElem(sub) {
     const $sub = $('<div>');
     const $lang = $(`<div style="width: 15vw; min-width: 15vw; max-width: 200px;">${sub.LanguageName}</div>`)
@@ -37,7 +52,7 @@ function createSubElem(sub) {
         .addClass('sub')
         .append($lang)
         .append($filename)
-        .click(event => location.href = sub.SubDownloadLink);
+        .click(event => location.href = removeGzExtenstion(sub.SubDownloadLink));
     return $sub;
 }
 
