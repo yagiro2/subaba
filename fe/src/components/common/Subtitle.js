@@ -41,9 +41,9 @@ const Description = styled.div`
 `;
 
 const Subtitle = (props) => {
-    const { LanguageName, SubDownloadLink, description } = props;
+    const { LanguageName, directDownloadLink, description } = props;
     return (
-        <StyledA href={ SubDownloadLink }>
+        <StyledA href={ directDownloadLink }>
             <Container>
                 <Language>{ LanguageName }</Language>
                 <Description>{ description }</Description>
