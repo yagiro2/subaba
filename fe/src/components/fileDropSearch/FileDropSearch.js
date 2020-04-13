@@ -80,7 +80,7 @@ const FileDropSearch = () => {
         const firstFile = files && files[0];
         if (!firstFile) return;
         actions.searchByFile(firstFile);
-    }, [ handleDragEnd ]);
+    }, [ actions, handleDragEnd ]);
 
     useEffect(() => {
         document.body.ondrop = handleDrop;
