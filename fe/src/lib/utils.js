@@ -1,15 +1,30 @@
-const vipLanguages = [ 'Hebrew', 'English' ];
+const createTypesSortObject = (typesOrder) => {
+    const typesOrderObj = {};
+    typesOrder.forEach((type, i) => typesOrderObj[type] = i + 1);
+    return typesOrderObj;
+}
 
-const vipLanguagesObj = {};
-vipLanguages.forEach((lang, i) =>
-    vipLanguagesObj[lang] = ({ LanguageName: lang.LanguageName, sortLevel: i + 1 }));
+const getSortLevel = (typesOrderObj, item, getItemType) => typesOrderObj[getItemType(item)];
+
+export const sortArrayByType = (array, typesOrder, getItemType) => {
+    const typesOrderObj = createTypesSortObject(typesOrder);
+    const arraySortedByType = array.sort((item1, item2) => {
+        const item1SortLevel = getSortLevel(typesOrderObj, item1, getItemType);
+        const item2SortLevel = getSortLevel(typesOrderObj, item2, getItemType);
+        return item1SortLevel <= item2SortLevel ? -1 : 1;
+    });
+    return arraySortedByType;
+}
+
+const vipLanguages = [ 'Hebrew', 'English' ];
+const vipLanguagesObj = createTypesSortObject(vipLanguages);
 
 export const sortSubsArrByVipAndAlphabet = subsArr => {
     const sortedSubsArr = subsArr
         .map(sub => {
             /** give each sub a sort level */
-            const vipLang = vipLanguagesObj[sub.LanguageName];
-            return { ...sub, sortLevel: !vipLang ? vipLanguages.length + 1 : vipLang.sortLevel };
+            const vipLangSortLevel = vipLanguagesObj[sub.LanguageName];
+            return { ...sub, sortLevel: !vipLangSortLevel ? vipLanguages.length + 1 : vipLangSortLevel };
         })
         .sort((sub1, sub2) => {
             /** return the sub with lowest sortLevel, and if equal - sort alphabetically */
@@ -40,4 +55,14 @@ export const buildQueryParamsJoin = queryParams => {
             .join('&');
     
     return queryParamsStr;
+};
+
+const replaceSeperatorsWithSpaces = str => str.replace(/[.-]/g, ' ');
+
+export const createFlexQueryForFile = file => {
+    const fileNameNoExt = removeExtenstion(file.name);
+    const onlySpaces = replaceSeperatorsWithSpaces(fileNameNoExt);
+    let flexQuery = onlySpaces;
+    console.log('flex query', flexQuery);
+    return flexQuery;
 };

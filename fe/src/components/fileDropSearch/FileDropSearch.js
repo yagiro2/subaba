@@ -1,17 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { useSelector } from 'react-redux';
 import useActions from '../../hooks/useActions';
 
-/*
-TODO:
-    flexible search
-    search results labels: exact/flex
-*/
-
-import osHash from '../../lib/osHash';
-import { searchSubtitlesByMovieHash } from '../../actions';
-import { getSelectedLanguageCode } from '../../reducers/rootReducer';
+import { searchByFile } from '../../actions';
 
 function getDroppedFilesFromDropEvent(ev) {
 
@@ -62,18 +53,13 @@ const Container = styled.div`
 `;
 
 const actionCreators = {
-    searchSubtitlesByMovieHash,
+    searchByFile,
 };
 
 const FileDropSearch = () => {
 
-    const selectedLanguageCode = useSelector(getSelectedLanguageCode);
     const actions = useActions(actionCreators)
     const [ dragging, setDragging ] = useState(false);
-
-    const searchByHash = useCallback(movieHash => {
-        actions.searchSubtitlesByMovieHash(movieHash, selectedLanguageCode);
-    }, [ actions, selectedLanguageCode ]);
 
     const handleDragEnd = useCallback(() => {
         setDragging(false);
@@ -93,9 +79,8 @@ const FileDropSearch = () => {
         const files = getDroppedFilesFromDropEvent(ev);
         const firstFile = files && files[0];
         if (!firstFile) return;
-        osHash(firstFile)
-            .then(searchByHash);
-    }, [ searchByHash, handleDragEnd ]);
+        actions.searchByFile(firstFile);
+    }, [ handleDragEnd ]);
 
     useEffect(() => {
         document.body.ondrop = handleDrop;

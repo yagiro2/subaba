@@ -5,7 +5,7 @@ import SearchSubtitlesByText from '../searchSubtitlesByText/SearchSubtitlesByTex
 import LanguageSelect from '../LanguageSelect';
 import { createChildMarginMixin } from '../mixins/childMarginMixin';
 import FileDropSearch from '../fileDropSearch/FileDropSearch';
-import SearchResults from '../searchResults/SearchResults';
+import AllSearchResults from '../searchResults/AllSearchResults';
 
 const childMargin = createChildMarginMixin('top', '20px');
 
@@ -20,7 +20,7 @@ const Content = () => {
             <LanguageSelect/>
             <SearchSubtitlesByText/>
             <FileDropSearch/>
-            <SearchResults/>
+            <AllSearchResults/>
         </Container>
     );
 }

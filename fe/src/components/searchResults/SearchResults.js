@@ -1,15 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { getLatestSubtitleSearchResults, isFetchingSearchResults } from '../../reducers/rootReducer';
-import NoSubtitles from '../common/NoSubtitles';
 import H3 from '../typography/H3';
 import Subtitle from '../common/Subtitle';
 import Loader from '../common/Loader';
+import { searchTypes } from '../../consts';
 
 const Container = styled.div`
 `;
 
+// todo: code duplication
 const WithExtraMarginTop = styled.div`
     margin-top: 60px !important;
 `;
@@ -24,35 +23,37 @@ const Results = styled.div`
     max-width: 100%;
 `;
 
-const renderResults = (subsArr) => {
+const titlePrefixes = {
+    // [searchTypes.text]: 'text',
+    [searchTypes.movieHash]: 'exact',
+    [searchTypes.flex]: 'flexible',
+};
+
+const renderResults = (searchType, subsArr) => {
 
     if (!subsArr || !subsArr.length) return null;
 
     return (
         <Results>
-            <H3>> results.</H3>
+            <H3>> { titlePrefixes[searchType] } results.</H3>
             { subsArr.map((sub, i) => <Subtitle key={ i } { ...sub }/>) }
         </Results>
     );
 
 }
 
-const SearchResults = () => {
-    const results = useSelector(getLatestSubtitleSearchResults);
-    const fetching = useSelector(isFetchingSearchResults);
+const SearchResults = ({ subtitles, fetching, type }) => {
 
     if (fetching) return (
-        <WithExtraMarginTop><Loader/></WithExtraMarginTop>
+        <WithExtraMarginTop>
+            <Loader/>
+        </WithExtraMarginTop>
     );
 
-    const didSearchOnce = fetching !== undefined;
-    if (didSearchOnce && (!results || !results.length)) {
-        return <WithExtraMarginTop><NoSubtitles/></WithExtraMarginTop>;
-    }
 
     return (
         <Container>
-            { renderResults(results, fetching) }
+            { renderResults(type, subtitles) }
         </Container>
     );
 };

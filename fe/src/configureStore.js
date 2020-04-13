@@ -10,6 +10,7 @@ export default function configureStore() {
     const store = createStore(
         rootReducer,
         undefined,
+        // applyMiddleware(reduxThunk, persistState)
         applyMiddleware(reduxLogger, reduxThunk, persistState)
     );
     return store;

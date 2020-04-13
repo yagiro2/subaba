@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import A from './A';
 import { createEllipsisTextOverflowMixin } from '../mixins/ellipsisTextOverflowMixin';
 import { createChildMarginMixin } from '../mixins/childMarginMixin';
+import SubtitleTag from './SubtitleTag';
 
 const childMarginMixin = createChildMarginMixin('top', '10px');
 
@@ -28,24 +29,33 @@ const StyledA = styled(A)`
     max-width: 100%;
 `;
 
-const Language = styled.div`
-    background-color: black;
-    color: white;
-    padding: 5px;
-`;
-
 const ellipsisTextOverflowMixin = createEllipsisTextOverflowMixin('100%');
 
 const Description = styled.div`
     ${ ellipsisTextOverflowMixin }
 `;
 
+const tagsChildMarginMixin = createChildMarginMixin('left', '10px');
+
+const Row = styled.div`
+    display: flex;
+    ${ tagsChildMarginMixin }
+`;
+
+const renderTags = tags => {
+    if (!tags) return null;
+    return tags.map((tag, i) => <SubtitleTag { ...tag } key={ i }/>);
+};
+
 const Subtitle = (props) => {
-    const { LanguageName, directDownloadLink, description } = props;
+    const { LanguageName, directDownloadLink, description, tags } = props;
     return (
         <StyledA href={ directDownloadLink }>
             <Container>
-                <Language>{ LanguageName }</Language>
+                <Row>
+                    <SubtitleTag label={ LanguageName } />
+                    { renderTags(tags) }
+                </Row>
                 <Description>{ description }</Description>
             </Container>
         </StyledA>
