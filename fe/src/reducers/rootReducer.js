@@ -71,3 +71,9 @@ export default function rootReducer(state = initialState, action) {
 
 export const getSelectedLanguageCode = state => state.selectedLanguageCode;
 export const getSearchData = state => state.searchData;
+
+export const getPersistedState = state => {
+    return {
+        selectedLanguageCode: getSelectedLanguageCode(state),
+    };
+}

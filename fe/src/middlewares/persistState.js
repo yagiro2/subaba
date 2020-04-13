@@ -1,6 +1,9 @@
+import { getPersistedState } from "../reducers/rootReducer";
+
 const persistState = store => next => action => {
     const rv = next(action);
-    localStorage.state = JSON.stringify(store.getState());
+    const stateToPersist = getPersistedState(store.getState());
+    localStorage.state = JSON.stringify(stateToPersist);
     return rv;
 };
 
