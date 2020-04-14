@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import NoSubtitles from '../common/NoSubtitles';
 import SearchResults from './SearchResults';
 
-import { getAllSearchData } from '../../selectors/searchResultsSelectors';
+import { getAllVisibleSearchData } from '../../selectors/searchResultsSelectors';
 import { createChildMarginMixin } from '../mixins/childMarginMixin';
 
 // todo: code duplication
@@ -19,7 +19,7 @@ const Container = styled.div`
 `;
 
 const AllSearchResults = () => {
-    const { searches, noResults } = useSelector(getAllSearchData);
+    const { searches, noResults } = useSelector(getAllVisibleSearchData);
 
     if (noResults) {
         return (

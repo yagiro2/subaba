@@ -10,7 +10,7 @@ const searchOrder = [
     searchTypes.text,
 ];
 
-export const getAllSearchData = createSelector(
+export const getAllVisibleSearchData = createSelector(
     [ getSearchData ],
     (searchData) => {
         

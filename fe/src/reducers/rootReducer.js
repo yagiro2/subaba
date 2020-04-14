@@ -40,10 +40,10 @@ const updateSearchData = (state, searchType, updates) => {
 
 const setSearchResults = (state, action) => {
     const {
-        payload: { subtitles },
+        payload: { subject, subtitles },
     } = action;
 
-    return updateSearchData(state, getSearchType(action), { subtitles });
+    return updateSearchData(state, getSearchType(action), { subject, subtitles });
 };
 
 const setSearchFetching = (state, action) => {
