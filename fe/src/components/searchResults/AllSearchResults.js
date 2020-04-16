@@ -6,7 +6,7 @@ import NoSubtitles from '../common/NoSubtitles';
 import SearchResults from './SearchResults';
 
 import { getAllVisibleSearchData } from '../../selectors/searchResultsSelectors';
-import { createChildMarginMixin } from '../mixins/childMarginMixin';
+import { createChildMarginMixin } from '../../mixins/childMarginMixin';
 
 // todo: code duplication
 const WithExtraMarginTop = styled.div`

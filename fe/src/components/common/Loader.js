@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 
 import logo from '../../assets/mia-vincent.png';
 
-import './spin.css';
-import './vape.css';
+import '../../style/spin.css';
+import '../../style/vape.css';
 
 const Container = styled.div`
     display: flex;
@@ -32,7 +32,7 @@ const Loader = ({ label, withVapeAnimation }) => {
     return (
         <Container className={ classnames({ vape: withVapeAnimation }) } height="100px">
             <Logo className="spin">
-                <img src={logo} alt="loading" width="100px"/>
+                <img src={ logo } alt="loading" width="100px"/>
             </Logo>
             { label && <Label>{ label }</Label> }
         </Container>

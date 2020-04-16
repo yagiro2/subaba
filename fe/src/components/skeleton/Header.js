@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import RandomQuote from './RandomQuote';
-import { createChildMarginMixin } from '../mixins/childMarginMixin';
+import { createChildMarginMixin } from '../../mixins/childMarginMixin';
+import { getRandomItem } from '../../lib/utils';
 
 const childMargin = createChildMarginMixin('top', '10px');
 
@@ -14,10 +15,12 @@ const Title = styled.div`
     line-height: 3rem;
 `;
 
+const suffixes = [ '.', '?', '...' ];
+
 const Header = () => {
     return (
         <Container>
-            <Title>subaba.</Title>
+            <Title>subaba{ getRandomItem(suffixes) }</Title>
             <RandomQuote/>
         </Container>
     );

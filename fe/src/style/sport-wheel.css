@@ -1,0 +1,15 @@
+.sport-wheel {
+    animation-name: sport-wheel;
+    animation-duration: .7s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes sport-wheel {
+    from, to {
+        transform: rotate(0);
+    }
+
+    75% {
+        transform: rotate(-7deg);
+    }
+}

@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import useActions from '../../hooks/useActions';
 
 import { searchByFile } from '../../actions';
+import DropVideoFile from './DropVideoFile';
 
 function getDroppedFilesFromDropEvent(ev) {
 
@@ -56,7 +57,9 @@ const actionCreators = {
     searchByFile,
 };
 
-const FileDropSearch = () => {
+const FileDropSearch = (props) => {
+
+    const { className } = props;
 
     const actions = useActions(actionCreators)
     const [ dragging, setDragging ] = useState(false);
@@ -89,7 +92,10 @@ const FileDropSearch = () => {
     }, [ handleDrop, handleDragOver, handleDragEnd ]);
 
     return (
-        <Container visible={ dragging }/>
+        <>
+            <Container visible={ dragging }/>
+            <DropVideoFile className={ className }/>
+        </>
     );
 }
 

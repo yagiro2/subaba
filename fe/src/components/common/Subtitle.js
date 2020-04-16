@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import A from './A';
-import { createEllipsisTextOverflowMixin } from '../mixins/ellipsisTextOverflowMixin';
-import { createChildMarginMixin } from '../mixins/childMarginMixin';
+import { createEllipsisTextOverflowMixin } from '../../mixins/ellipsisTextOverflowMixin';
+import { createChildMarginMixin } from '../../mixins/childMarginMixin';
 import SubtitleTag from './SubtitleTag';
 
 const childMarginMixin = createChildMarginMixin('top', '10px');
