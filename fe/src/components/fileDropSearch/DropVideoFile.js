@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import classnames from 'classnames';
 
@@ -16,10 +16,29 @@ const Container = styled.div`
     border: 2px dashed black;
 `;
 
-const DropVideoFile = ({ className, ...otherProps }) => {
+const useAnimation = (classNameProp) => {
+
+    const [ animationStarted, setAnimationStarted ] = useState(false);
+
+    const startAnimation = useCallback(() => {
+        setAnimationStarted(true);
+    }, [ setAnimationStarted ]);
+
+    const className = classnames(classNameProp, { 'sport-wheel': animationStarted });
+
+    return {
+        className,
+        startAnimation,
+    };
+};
+
+const DropVideoFile = ({ className: classNameProp, ...otherProps }) => {
+
+    const { className, startAnimation } = useAnimation(classNameProp);
+
     return (
-        <Container className={ classnames(className, 'sport-wheel') } { ...otherProps }>
-            <img src={ dropAvi } alt="loading" width="24px"/>
+        <Container className={ className } { ...otherProps }>
+            <img src={ dropAvi } alt="file" width="24px" onLoad={ startAnimation }/>
             <div>
                 drop a video file to search
             </div>
