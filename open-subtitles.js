@@ -33,7 +33,6 @@ const myQueryToOsQuery = {
 const createJoinedPathParamsFromMyQuery = myQuery => {
     const pathParams = Object.entries(myQuery)
         .map(myParamEntry => {
-            console.log(myParamEntry)
             const myParamKey = myParamEntry[0];
             const myParamValue = myParamEntry[1];
             const osParamKey = myQueryToOsQuery[myParamKey];
