@@ -1,9 +1,17 @@
-import { getPersistedState } from "../reducers/rootReducer";
+import { getPersistedState } from '../reducers/rootReducer';
+import debouncify from '../lib/debouncify';
+
+const saveStateDebounced = debouncify(
+    (state) => {
+        localStorage.state = JSON.stringify(state);
+        // console.log('==== stored state', state);
+    },
+    2000,
+);
 
 const persistState = store => next => action => {
     const rv = next(action);
-    const stateToPersist = getPersistedState(store.getState());
-    localStorage.state = JSON.stringify(stateToPersist);
+    saveStateDebounced(getPersistedState(store.getState()));
     return rv;
 };
 
