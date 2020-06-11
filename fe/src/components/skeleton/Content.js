@@ -6,6 +6,7 @@ import LanguageSelect from '../LanguageSelect';
 import { createChildMarginMixin } from '../../mixins/childMarginMixin';
 import FileDropSearch from '../fileDropSearch/FileDropSearch';
 import AllSearchResults from '../searchResults/AllSearchResults';
+import Animated from '../common/animated/Animated';
 
 const Container = styled.div`
     ${ createChildMarginMixin('top', '20px') }
@@ -25,6 +26,7 @@ const StyledFileDropSearch = styled(FileDropSearch)`
 
 const Content = () => {
     return (
+        <Animated delayMs={ 700 }>
         <Container>
             <Row>
                 <LanguageSelect/>
@@ -33,6 +35,7 @@ const Content = () => {
             <StyledFileDropSearch/>
             <AllSearchResults/>
         </Container>
+        </Animated>
     );
 }
 
