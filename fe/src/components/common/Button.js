@@ -11,10 +11,14 @@ const StyledButton = styled.button`
     box-sizing: border-box;
     outline: none;
     transition: background-color .2s, color .2s;
-    :hover {
+    :hover:not(:disabled) {
         padding: 9px 14px;
         background-color: #ff6969;
         border: 1px solid black;
+    }
+    :disabled {
+        background-color: #bbbbbb;
+        cursor: auto;
     }
 `;
 

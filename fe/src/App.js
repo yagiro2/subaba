@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Provider } from 'react-redux';
 import Skeleton from './components/skeleton/Skeleton';
 import configureStore from './configureStore';
+import Blanko from './components/blanko/Blanko';
 
 const store = configureStore();
 
@@ -17,7 +18,7 @@ function App() {
   return (
     <Provider store={ store }>
       <Container>
-          <Skeleton/>
+          <Blanko/>
       </Container>
     </Provider>
   );
