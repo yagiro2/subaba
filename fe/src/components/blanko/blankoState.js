@@ -1,27 +1,29 @@
 import { useReducer } from 'react';
 
-const initialState = {
-    players: {
-        yakir: {
-            name: 'yakir',
-            moves: [
-                { value: 10, },
-                { value: 20, },
-            ]
-        },
-        dana: {
-            name: 'dana',
-            moves: [
-                { value: 4, },
-                { value: 7, },
-            ]
-        }
+
+const parseJsonSafe = json => {
+    try {
+        return JSON.parse(json);
+    }
+    catch(e) {
+        return;
     }
 };
 
+const getInitialState = () => {
+    return parseJsonSafe(localStorage.blankoState) ?? {};
+};
+
+const initialState = getInitialState();
+
 const actionTypes = {
     ADD_PLAYER: 'ADD_PLAYER',
-    ADD_MOVE: 'ADD_PLAYADD_MOVEER',
+    ADD_MOVE: 'ADD_PLAYADD_MOVE',
+    RESET: 'RESET',
+};
+
+const reduceReset = () => {
+    return {};
 };
 
 const reduceAddPlayer = (state, action) => {
@@ -50,20 +52,27 @@ const reduceAddMove = (state, action) => {
     };
 };
 
-
 const blankoReducer = (state, action) => {
     switch (action.type) {
         case actionTypes.ADD_PLAYER:
             return reduceAddPlayer(state, action);
         case actionTypes.ADD_MOVE:
             return reduceAddMove(state, action);
+        case actionTypes.RESET:
+            return reduceReset();
         default:
             return state;
     }
 };
 
+const blankoReducerWithMiddleware = (state, action) => {
+    const newState = blankoReducer(state, action);
+    localStorage.blankoState = JSON.stringify(newState);
+    return newState;
+};
+
 export const useBlankoReducer = (predefinedState = initialState) => {
-    return useReducer(blankoReducer, predefinedState);
+    return useReducer(blankoReducerWithMiddleware, predefinedState);
 };
 
 const createAction = (type, payload, meta, error) => ({ type, payload, meta, error });
@@ -71,4 +80,5 @@ const createAction = (type, payload, meta, error) => ({ type, payload, meta, err
 export const actions = {
     addPlayer: player => createAction(actionTypes.ADD_PLAYER, player),
     addMove: (playerName, move) => createAction(actionTypes.ADD_MOVE, { playerName, move }),
+    reset: () => createAction(actionTypes.RESET),
 };

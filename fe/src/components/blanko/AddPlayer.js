@@ -21,6 +21,7 @@ function AddPlayer({ players, onAddPlayer }) {
     const handleAddPlayer = useCallback(
         () => {
             onAddPlayer && onAddPlayer({ name: playerName });
+            setPlayerName('');
         }, [ playerName, onAddPlayer ]
     );
     

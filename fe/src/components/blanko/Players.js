@@ -6,11 +6,11 @@ import Player from './Player';
 const Container = styled.div`
     display: flex;
     > :not(:first-child) {
-      margin-left: 20px;
-  }
+      margin-left: 80px;
+    }
 `;
 
-const Players = ({ players, onAddMove }) => {
+const Players = ({ players, onAddMove, showScores }) => {
 
     const playersArr = useMemo(
         () => players && Object.values(players),
@@ -24,6 +24,7 @@ const Players = ({ players, onAddMove }) => {
                     key={ player.name }
                     { ...player }
                     onAddMove={ (move) => onAddMove && onAddMove(player.name, move) }
+                    showScore={ showScores }
                 />) }
         </Container>
     );
