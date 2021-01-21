@@ -49,4 +49,6 @@ const quotes = [
     `Calmer then you are.`,
     `Are these the Nazis, Walter?`,
     `Oh, behave!`,
+    `I have had it with these motherfucking SNAKES on this motherfucking PLANE!`,
+    `Son, you got a panty on your head.`,
 ];
