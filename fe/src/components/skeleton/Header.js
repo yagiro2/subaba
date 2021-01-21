@@ -15,7 +15,7 @@ const Title = styled.div`
     line-height: 3rem;
 `;
 
-const suffixes = [ '.', '?', '...' ];
+const suffixes = [ '.', '?', '!!#!' ];
 
 const Header = () => {
     return (
