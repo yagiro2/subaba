@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import TextInput from './common/TextInput';
@@ -22,8 +22,8 @@ const SearchBox = (props) => {
     const { onSearch } = props;
 
     const [ query, setQuery ] = useState();
-    const handleChange = useCallback(e => setQuery(e.target.value), [ setQuery ]);
-    const handleSearchRequest = useCallback(() => onSearch && onSearch(query), [ query, onSearch ]);
+    const handleChange = e => setQuery(e.target.value);
+    const handleSearchRequest = () => onSearch && onSearch(query);
 
     return (
         <Container>
