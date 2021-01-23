@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import theme from '../../theme/theme';
+
 const StyledButton = styled.button`
     font-size: 1rem;
     padding: 10px 15px;
@@ -10,11 +12,11 @@ const StyledButton = styled.button`
     cursor: pointer;
     box-sizing: border-box;
     outline: none;
-    transition: background-color .2s, color .2s;
     :hover {
         padding: 9px 14px;
-        background-color: #ff6969;
+        background-color: ${ theme.colors.active };
         border: 1px solid black;
+        color: black;
     }
 `;
 

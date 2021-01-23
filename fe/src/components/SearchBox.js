@@ -29,7 +29,7 @@ const SearchBox = (props) => {
         <Container>
             <StyledTextInput
                 onChange={ handleChange }
-                placeholder="what?"
+                placeholder="search here, tofu schmear"
                 onEnter={ handleSearchRequest }
             />
             <StyledButton

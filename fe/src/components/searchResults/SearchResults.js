@@ -44,9 +44,12 @@ const List = styled.div`
 
 const Row = styled.div`
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     & > :not(:first-child) {
         margin-left: 10px;
+    }
+    .title {
+        margin-top: -5px;
     }
 `
 
@@ -57,8 +60,8 @@ const renderResults = (searchType, subsArr, subject, expanded, setExpanded) => {
     return (
         <Results>
             <Row className="clickable" onClick={ () => setExpanded(!expanded) }>
-                <H3>{ titlePrefixes[searchType] } results</H3>
-                <CollpaseArrow expanded={ expanded } size="2.5rem"/>
+                <H3 className="title">{ titlePrefixes[searchType] } results</H3>
+                <CollpaseArrow expanded={ expanded } size="1.7rem"/>
             </Row>
             { subject && <Subject>{ subject }</Subject> }
             <List expanded={ expanded }>

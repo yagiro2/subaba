@@ -1,48 +1,46 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import classnames from 'classnames';
 
-import dropAvi from '../../assets/drop-avi.png'
+import theme from '../../theme/theme';
 import { createChildMarginMixin } from '../../mixins/childMarginMixin';
 
-import '../../style/sport-wheel.css';
+const Wrapper = styled.div`
+    position: relative;
+    max-width: fit-content;
+`
 
 const Container = styled.div`
     display: flex;
     align-items: center;
     ${ createChildMarginMixin('left', '10px') }
-    background-color: #f2f2f2;
     padding: 15px;
-    border: 2px dashed black;
+    border: 1px solid black;
+    user-select: none;
+    position: relative;
+    z-index: 2;
+    background: ${ ({ dragging }) => dragging ? theme.colors.active : 'white' };
 `;
 
-const useAnimation = (classNameProp) => {
+const CoolBack = styled.div`
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: black;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+`
 
-    const [ animationStarted, setAnimationStarted ] = useState(false);
-
-    const startAnimation = useCallback(() => {
-        setAnimationStarted(true);
-    }, [ setAnimationStarted ]);
-
-    const className = classnames(classNameProp, { 'sport-wheel': animationStarted });
-
-    return {
-        className,
-        startAnimation,
-    };
-};
-
-const DropVideoFile = ({ className: classNameProp, ...otherProps }) => {
-
-    const { className, startAnimation } = useAnimation(classNameProp);
+const DropVideoFile = ({ dragging }) => {
 
     return (
-        <Container className={ className } { ...otherProps }>
-            <img src={ dropAvi } alt="file" width="24px" onLoad={ startAnimation }/>
-            <div>
-                drop a video file to search
-            </div>
-        </Container>
+        <Wrapper>
+            <Container dragging={ dragging }>
+                <span>drop a video, tasty cheerio</span>
+            </Container>
+            <CoolBack dragging={ dragging }/>
+        </Wrapper>
+
     );
 }
 

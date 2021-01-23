@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import styled, { css } from 'styled-components';
-import useActions from '../../hooks/useActions';
+import { useDispatch } from 'react-redux'
 
 import { searchByFile } from '../../actions';
 import DropVideoFile from './DropVideoFile';
@@ -31,37 +30,12 @@ function getDroppedFilesFromDropEvent(ev) {
     return droppedFiles;
 }
 
-const visibleCss = css`
-    border: 3px black dashed;
-    z-index: 3;
-    background-color: #fff700;
-    opacity: .5;
-`;
-
-const marginVal = 1;
-const marginUnit = 'vmin';
-const margin = marginVal + marginUnit;
-
-const Container = styled.div`
-    z-index: -1;
-    position: fixed;
-    margin: 0 !important;
-    width: calc(100vw - ${ marginVal * 2 }${ marginUnit });
-    height: calc(100vh - ${ marginVal * 2 }${ marginUnit });
-    top: ${ margin };
-    left: ${ margin };
-    ${ ({ visible }) => !visible ? '' : visibleCss }
-`;
-
-const actionCreators = {
-    searchByFile,
-};
-
 const FileDropSearch = (props) => {
+
+    const dispatch = useDispatch();
 
     const { className } = props;
 
-    const actions = useActions(actionCreators)
     const [ dragging, setDragging ] = useState(false);
 
     const handleDragEnd = useCallback(() => {
@@ -82,8 +56,9 @@ const FileDropSearch = (props) => {
         const files = getDroppedFilesFromDropEvent(ev);
         const firstFile = files && files[0];
         if (!firstFile) return;
-        actions.searchByFile(firstFile);
-    }, [ actions, handleDragEnd ]);
+        dispatch(searchByFile(firstFile));
+
+    }, [ dispatch, handleDragEnd ]);
 
     useEffect(() => {
         document.body.ondrop = handleDrop;
@@ -92,10 +67,7 @@ const FileDropSearch = (props) => {
     }, [ handleDrop, handleDragOver, handleDragEnd ]);
 
     return (
-        <>
-            <Container visible={ dragging }/>
-            <DropVideoFile className={ className }/>
-        </>
+        <DropVideoFile className={ className } dragging={ dragging }/>
     );
 }
 

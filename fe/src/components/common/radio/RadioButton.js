@@ -1,10 +1,11 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import theme from '../../../theme/theme';
 
 const nonSelectedHoverCss = css`
     :hover {
         padding: 8px 13px;
-        background-color: #ffe007; // #ffdf00; // #ececec;
+        background-color: ${ theme.colors.active };
     }
 `;
 
@@ -18,7 +19,7 @@ const Container = styled.div`
         margin-left: -1px;
     }
     padding: 8px 13px;
-    transition: background-color .3s;
+    user-select: none;
     ${ ({ selected }) => selected ? '' : nonSelectedHoverCss }
 
 `;
