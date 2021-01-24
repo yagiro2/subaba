@@ -37,6 +37,7 @@ const List = styled.div`
     flex-direction: column;
     align-items: flex-start;
     margin-top: 10px;
+    max-width: 98%;
     & > :not(:first-child) {
         margin-top: 10px;
     }
