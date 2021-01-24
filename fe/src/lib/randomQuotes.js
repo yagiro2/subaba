@@ -51,4 +51,6 @@ const quotes = [
     `Oh, behave!`,
     `I have had it with these motherfucking SNAKES on this motherfucking PLANE!`,
     `Son, you got a panty on your head.`,
+    `What the hell kind of name is I.B. Bangin'?`,
+    `People see the ring, they think at least somebody can stand the son of a bitch.`,
 ];
