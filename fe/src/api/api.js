@@ -1,7 +1,5 @@
 import { buildQueryParamsJoin } from '../lib/utils';
-// const baseUrl = 'http://localhost:4000/api'; // local
-// const baseUrl = 'https://subaba-stg.herokuapp.com/api'; // staging
-const baseUrl = 'https://subaba.herokuapp.com/api'; // production
+const baseUrl = process.env.REACT_APP_URL_API;
 
 const createUrl = relativeUrl => baseUrl + relativeUrl;
 
