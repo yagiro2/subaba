@@ -12,3 +12,9 @@ export const searchSubtitles = (queryParams) => {
     return fetch(createUrl(`/subs${ queryParamsJoin }`))
         .then(res => res.json());
 };
+
+export const fetchAllQuotes = () => {
+    return fetch(createUrl(`/quotes`))
+        .then(res => res.json())
+        .then(({ success, data: quotes }) => success ? quotes : []);
+};
