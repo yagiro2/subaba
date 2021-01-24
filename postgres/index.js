@@ -13,7 +13,7 @@ const sslConfig = process.env.NODE_ENV !== 'production'
 const pool = new Pool({
     /**
      * DATABASE_URL
-    *   local: found on ~/.bash_profile
+    *   local: found on ~/.bash_profile (eg. postgresql://localhost/mydb)
     *   production: provided by heroku
      */
     connectionString: process.env.DATABASE_URL,
