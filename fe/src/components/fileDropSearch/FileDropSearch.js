@@ -61,6 +61,7 @@ const FileDropSearch = (props) => {
     }, [ dispatch, handleDragEnd ]);
 
     useEffect(() => {
+        /** body needs to have at least height of 100vh, to prevent "misses" of the drop */
         document.body.ondrop = handleDrop;
         document.body.ondragover = handleDragOver;
         document.body.onmouseout = handleDragEnd;
