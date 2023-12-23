@@ -3,17 +3,17 @@
   "name": "subaba",
   "icons": [
     {
-      "src": "subaba.ico",
+      "src": "richie.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "subaba-icon.png",
+      "src": "richie512.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "subaba-icon.png",
+      "src": "richie512.png",
       "type": "image/png",
       "sizes": "512x512"
     }

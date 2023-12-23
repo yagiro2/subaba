@@ -1,10 +1,9 @@
 {
-  "name": "yakircv-be",
+  "name": "subaba",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./build.sh",
     "start": "node index"
   },
@@ -14,7 +13,6 @@
   "author": "yagiro",
   "license": "ISC",
   "dependencies": {
-    "classnames": "^2.2.6",
     "express": "^4.17.1",
     "node-fetch": "^2.6.1",
     "opensubtitles-api": "^5.1.0",
