@@ -7,7 +7,7 @@ const port = process.env.PORT || 4000;
 const openSubtitlesClient = require('./open-subtitles');
 // const db = require('./postgres') // TODO: COMMENTED OUT ON GCP MIGRATION
 
-const feBuildPath = path.resolve('./fe/build');
+const feBuildPath = path.resolve('./react-app/build');
 const feIndexHtmlPath = path.resolve(feBuildPath, 'index.html');
 
 app.use((req, res, next) => {
