@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "deploy-gcp": "npm run build && gcloud run deploy",
     "build": "./build.sh",
     "start": "node index"
   },
