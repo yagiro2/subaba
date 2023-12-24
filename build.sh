@@ -1,5 +1,5 @@
 # install create-react-app dependencies
-cd fe
+cd react-app
 npm install
 
 # create FE production build

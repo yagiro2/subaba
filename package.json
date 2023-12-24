@@ -7,13 +7,10 @@
     "build": "./build.sh",
     "start": "node index"
   },
-  "engines": {
-    "node": "10.18.0"
-  },
   "author": "yagiro",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "node-fetch": "^2.6.1",
     "opensubtitles-api": "^5.1.0",
     "pg": "^8.5.1"
