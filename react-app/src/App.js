@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import styled from 'styled-components';
+import { Provider } from 'react-redux';
+import Skeleton from './components/skeleton/Skeleton';
+import configureStore from './configureStore';
+
+const store = configureStore();
+
+const Container = styled.div`
+  display: flex;
+  width: 100vw;
+  max-width: 100vw;
+  padding: 3vmin;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={ store }>
+      <Container>
+          <Skeleton/>
+      </Container>
+    </Provider>
   );
 }
 
