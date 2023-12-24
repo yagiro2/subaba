@@ -36,7 +36,7 @@ const DropVideoFile = ({ dragging }) => {
     return (
         <Wrapper>
             <Container dragging={ dragging }>
-                <span>drop a video, tasty cheerio</span>
+                <span>or just drop a video, don't be a hero</span>
             </Container>
             <CoolBack dragging={ dragging }/>
         </Wrapper>
