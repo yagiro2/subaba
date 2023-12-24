@@ -7,9 +7,6 @@
     "build": "./build.sh",
     "start": "node index"
   },
-  "engines": {
-    "node": "10.15.0"
-  },
   "author": "yagiro",
   "license": "ISC",
   "dependencies": {
