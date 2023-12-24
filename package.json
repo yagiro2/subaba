@@ -8,7 +8,7 @@
     "start": "node index"
   },
   "engines": {
-    "node": "10.15.0"
+    "node": "10.18.0"
   },
   "author": "yagiro",
   "license": "ISC",
