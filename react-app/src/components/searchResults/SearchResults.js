@@ -17,6 +17,7 @@ const WithExtraMarginTop = styled.div`
 
 const Subject = styled(Sm)`
     margin-top: 3px;
+    margin-left: 10px;
 `;
 
 const Results = styled.div`
@@ -64,7 +65,7 @@ const renderResults = (searchType, subsArr, subject, expanded, setExpanded) => {
                 <H3 className="title">{ titlePrefixes[searchType] } results</H3>
                 <CollpaseArrow expanded={ expanded } size="1.7rem"/>
             </Row>
-            { subject && <Subject>{ subject }</Subject> }
+            { subject && <Subject>for: { subject }</Subject> }
             <List expanded={ expanded }>
                 { subsArr.map((sub, i) => <Subtitle key={ i } { ...sub }/>) }
             </List>

@@ -1,6 +1,8 @@
 const theme = {
     colors: {
-        active: '#ffe007',
+        active: '#ffcb6e',
+        active2: '#ffbbbb',
+        brown1: '#56270c',
     },
 }
 

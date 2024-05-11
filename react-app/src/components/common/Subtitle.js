@@ -7,26 +7,26 @@ import { createChildMarginMixin } from '../../mixins/childMarginMixin';
 import SubtitleTag from './SubtitleTag';
 import theme from '../../theme/theme';
 
-const childMarginMixin = createChildMarginMixin('top', '10px');
+const childMarginMixin = createChildMarginMixin('left', '10px');
 
 const Container = styled.div`
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
-    background-color: #ffffe5;
-    border: solid 1px black;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    background-color: ${ theme.colors.active };
+    border: solid 2px ${ theme.colors.brown1 };
     ${ childMarginMixin }
-    :hover {
-        background-color: ${ theme.colors.active };
-    }
     max-width: 100%;
+    &:hover {
+        background-color: ${ theme.colors.active2 };
+    }
 `;
 
 const StyledA = styled(A)`
     display: flex;
     text-decoration: none;
-    color: black;
+    color: ${ theme.colors.brown1 };
     max-width: 100%;
 `;
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import theme from '../../theme/theme'
 
 const Conatiner = styled.div`
     background-color: ${ ({ backgroundColor }) => backgroundColor };
@@ -8,7 +9,7 @@ const Conatiner = styled.div`
 `;
 
 Conatiner.defaultProps = {
-    backgroundColor: 'black',
+    backgroundColor: theme.colors.brown1,
     color: 'white',
 };
 
