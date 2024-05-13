@@ -6,4 +6,4 @@ Subaba is a simple client for fetching subtitles from the OpenSubtitles API.
 1.2. This will run `gcloud run deploy` which will be an interactive shell script (since the arguments are not defined)  
 2. Choose the current source code (just hit `enter`)
 3. Service name: `subaba-service`
-4. Region: `[15] europe-west1`
+4. Region: `[16] europe-west1`
